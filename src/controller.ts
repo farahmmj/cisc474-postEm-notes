@@ -7,4 +7,7 @@ export class Controller {
     public postHello(req: express.Request, res: express.Response): void {
         res.send(req.body);
     }
+    public getUsers(req: express.Request, res: express.Response): void {
+        res.send("User123");
+    }
 }
