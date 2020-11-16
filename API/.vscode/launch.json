@@ -7,18 +7,26 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch DEV",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "dev-deb"
+            ],
+            "port": 5858,
+            "env": {
+                "serverPort": "3000"
+            }
+        }, 
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch Program",
             "preLaunchTask": "tsc: build - tsconfig.json",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/dist/app.js",
-            "stopOnEntry": true,
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "run-script",
-                "dev-deb"
-            ]
+            "program": "${workspaceFolder}/dist/app.js"
         }
-    ]
+       ]
 }

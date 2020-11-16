@@ -8,7 +8,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "tsc": "tsc",
     "build": "npm-run-all clean lint tsc",
-    "dev-deb": "ts-node-dev --respawn --transpileOnly --nolazy --inspect-brk=5858 ./src/app.ts",
+    "dev-deb": "ts-node-dev --respawn --transpileOnly --nolazy --inspect=5858 ./src/app.ts",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/app.ts",
     "prod": "npm-run-all build start",
     "prod-deb": "npm-run-all start-deb",
