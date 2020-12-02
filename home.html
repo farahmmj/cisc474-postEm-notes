@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>PostEm Notes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <title>Home page</title>
+    <link rel="stylesheet" href="login.css">
+
+    <style>
+        .center {
+            text-align: center;
+        }
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body style="background-color:#f8f7f7;">
+
+        <!-- <nav class="navbar navbar-inverse"> -->
+        <nav class="navbar navbar-inverse" style="background-color:rgb(184, 226, 231)">
+
+            <div class="container-fluid">
+                <div class="navbar-header">
+
+                    <a class="navbar-brand navbar-default">PostEm Notes</a>
+
+                </div>
+
+
+                <form class="navbar-form navbar-left" action="/action_page.php">
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                            placeholder="Search for a class, professor, or note taker" name="search"
+                            style="margin:auto; width: 500px; height: 30px">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+
+                    <a id="logoutBtn" class="btn btn-default" style="position:absolute; left:90%"
+                        href="welcome.html">Logout</a>
+                </form>
+
+            </div>
+        </nav>
+
+        <div class="container" style="background-color: rgb(236, 236, 236);">
+            <div class="row">
+                <div class="column">
+                    <img src="homeImages/note.png" alt="notes" style="width:75%">
+                </div>
+                <div class="column">
+                    <img src="homeImages/upload.png" alt="upload" style="width:75%">
+                </div>
+                <div class="column">
+                    <img src="homeImages/helpothers.png" alt="help" style="width:75%">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="container" style="background-color: rgb(236, 236, 236);">
+
+            <h1 class="start" style="font-family: Lucida Sans Unicode, Lucida Grande, sans-serif">Where to Begin</h1>
+            
+            <p class="start" style="font-family:Lucida Sans Unicode, Lucida Grande, sans-serif"> Click below to begin sharing your notes. 
+            </p>
+
+            <a id="uploadBtn" class="btn btn-default" href="upload.html" target="_blank">I want to start sharing!
+            </a>
+            <br><br>
+        </div>
+
+        <hr>
+
+        <div class="container" style="background-color: rgb(236, 236, 236);">
+
+            <!-- <h1 style="text-align:center"  >Recently Viewed Notes</h1> -->
+            <h1 class="center" style="font-family:Lucida Sans Unicode, Lucida Grande, sans-serif">Recently Viewed Notes
+            </h1>
+            <p style="font-family:Lucida Sans Unicode, Lucida Grande, sans-serif">
+                Browse through your previously viewed notes below
+            </p>
+
+            <!-- cards  -->
+
+            <div class="row">
+                <a href="https://www.iliketowastemytime.com/sites/default/files/imagecache/blog_image/space-wallpapers-1920x1200.jpg"
+                    target="_blank">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <img src="https://www.iliketowastemytime.com/sites/default/files/imagecache/blog_image/space-wallpapers-1920x1200.jpg"
+                                style="width:100%">
+                            <h3>Topic: </h3>
+                            <p>Notes for: Professor Silber</p>
+                        </div>
+                    </div>
+
+
+                    <a href="#" target="_blank">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <img src="https://www.iliketowastemytime.com/sites/default/files/imagecache/blog_image/space-wallpapers-1920x1200.jpg"
+                                    style="width:100%">
+                                <h3>Topic 2</h3>
+                                <p>Text</p>
+                            </div>
+                        </div>
+
+                        <a href="#" target="_blank">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <img src="https://www.iliketowastemytime.com/sites/default/files/imagecache/blog_image/space-wallpapers-1920x1200.jpg"
+                                        style="width:100%">
+                                    <h3>Topic 3</h3>
+                                    <p>Text</p>
+                                </div>
+                            </div>
+
+                            <a href="#" target="_blank">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <img src="https://www.iliketowastemytime.com/sites/default/files/imagecache/blog_image/space-wallpapers-1920x1200.jpg"
+                                            style="width:100%">
+                                        <h3>Topic 4</h3>
+                                        <p>Text</p>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+        <!-- cards end -->
+
+        </div>
+
+
+    </body>
+
+</html>

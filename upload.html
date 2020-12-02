@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>PostEm Notes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <title>Home page</title>
+    <link rel="stylesheet" href="login.css">
+
+    <style>
+        .center {
+            text-align: center;
+        }
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body style="background-color:#f8f7f7;">
+
+    <nav class="navbar navbar-inverse" style="background-color:rgb(184, 226, 231)">
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand navbar-default">PostEm Notes</a>
+            </div>
+
+
+            <form class="navbar-form navbar-left" action="/action_page.php">
+
+                <a id="logoutBtn" class="btn btn-default" style="position:absolute; left:90%"
+                    href="home.html">Return to Home</a>
+            </form>
+
+        </div>
+    </nav>
+
+
+    <hr>
+
+    <div class="container" style="background-color: rgb(236, 236, 236);">
+
+        <h1 class="center" style="font-family: Lucida Sans Unicode, Lucida Grande, sans-serif">Two ways to upload!</h1>
+        <p class="start" style="font-family:Lucida Sans Unicode, Lucida Grande, sans-serif"> 
+        </p>
+        <h4>
+            Method 1: Click to upload a file 
+        </h4>
+        
+    <!-- upload file button -->
+        <form action="" method="post">
+            <div class='upload-border'>
+                <input type="file" name="upload" />
+                <br>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        <br>
+    </div>
+    <!-- upload file button end -->
+
+    <hr>
+
+    <div class="container" style="background-color: rgb(236, 236, 236);">
+
+        <form action="/action_page.php">
+            <h4>
+                Method 2: Copy and paste or type your submission below:
+            </h4>
+            
+           
+            <textarea id="textbox" name="textbox" rows="10" cols="100">
+            </textarea>
+              <br><br>
+              <input type="submit" value="Submit">
+            </form>
+            <br>
+            <p></p>
+    </div>
+
+
+ 
+</body>
+
+</html>
