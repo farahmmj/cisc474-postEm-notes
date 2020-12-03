@@ -58,7 +58,6 @@ export class ProjectsController {
     //getSemesters
     //returns all valid unique semesters in the database
     getSemesters(req: express.Request, res: express.Response) {
-        res.send("stuff");
         ProjectsController.db.getRecords(ProjectsController.projectsTable)
             .then(results => {
                 //extracts just the semester

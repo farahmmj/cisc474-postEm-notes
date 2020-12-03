@@ -12,6 +12,9 @@ export class Database {
     static stringToId(id:string):ObjectID{
         return new ObjectID(id);
     }
+    static newId():ObjectID{
+        return new ObjectID();
+    }
     //addRecord
     // collection: the name of the collection to add the record to.
     // object: a javascript object to store in the collection
