@@ -54,7 +54,6 @@ var ProjectsController = /** @class */ (function () {
     //getSemesters
     //returns all valid unique semesters in the database
     ProjectsController.prototype.getSemesters = function (req, res) {
-        res.send("stuff");
         ProjectsController.db.getRecords(ProjectsController.projectsTable)
             .then(function (results) {
             //extracts just the semester

@@ -17,6 +17,7 @@ exports.MainRouter = void 0;
 var AppRouter_1 = require("./common/AppRouter");
 var securityrouter_1 = require("./security/securityrouter");
 var projectsRouter_1 = require("./projects/projectsRouter");
+var usersRouter_1 = require("./users/usersRouter");
 //root router for the API
 var MainRouter = /** @class */ (function (_super) {
     __extends(MainRouter, _super);
@@ -27,6 +28,8 @@ var MainRouter = /** @class */ (function (_super) {
     MainRouter.prototype.setupRoutes = function () {
         this.addRouter('/security', new securityrouter_1.SecurityRouter());
         this.addRouter('/projects', new projectsRouter_1.ProjectsRouter());
+        //Adding my stuff here
+        this.addRouter('/users', new usersRouter_1.UsersRouter());
     };
     return MainRouter;
 }(AppRouter_1.AppRouter));

@@ -15,6 +15,9 @@ var Database = /** @class */ (function () {
     Database.stringToId = function (id) {
         return new mongodb_1.ObjectID(id);
     };
+    Database.newId = function () {
+        return new mongodb_1.ObjectID();
+    };
     //addRecord
     // collection: the name of the collection to add the record to.
     // object: a javascript object to store in the collection
