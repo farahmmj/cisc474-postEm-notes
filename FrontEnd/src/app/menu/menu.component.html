@@ -1,7 +1,10 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark" class="navbarDesign">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-            <a [routerLinkActive]='activeClass' class="nav-link" routerLink='welcome'>Welcome</a>
+            <a [routerLinkActive]='activeClass' class="nav-link" routerLink='welcome'>Post'em Notes</a>
+            <a routerLink="/signup" class="button">Sign up now!</a>
+            <div class="divider"></div>
+            <a routerLink="/login" class="button">Login</a>
         </li>
     </ul>
 </nav>

@@ -41,6 +41,7 @@
     background-color: #f1f1f1;
     margin: auto;
     flex-grow: 1;
+    width: 100px;
   }
 
   .card img {
@@ -49,8 +50,8 @@
   }
   
   #img3{
-    height: 100px;
-    width: 200px;
+    height: 150px;
+    width: 250px;
   
   }
   .row{
@@ -110,3 +111,33 @@
     align-items: stretch;
     justify-content: center;
   }
+
+  .button{
+  background-color: whitesmoke;
+  border: none;
+  color: #c9af8d;
+  border-color: #c9af8d;
+  border-radius: 3px;
+  border-width: 3px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 50px;
+  font-weight: 200;
+  font-family: Optima, sans-serif;
+
+    }
+
+    .divider{
+      width:5px;
+      height:auto;
+      display:inline-block;
+  }
+  .divider2{
+    width:100px;
+    height:auto;
+    display:inline-block;
+}
+    
