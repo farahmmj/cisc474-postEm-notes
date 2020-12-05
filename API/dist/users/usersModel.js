@@ -6,17 +6,17 @@ var UsersModel = /** @class */ (function () {
         this.id = '';
         this.username = '';
         this.notes = '';
-        this.note_id = '';
+        this.comments = '';
     }
     UsersModel.fromObject = function (object) {
         var p = new UsersModel();
         p.username = object.username;
         p.notes = object.notes;
-        p.note_id = object.note_id;
+        p.comments = object.comments;
         return p;
     };
     UsersModel.prototype.toObject = function () {
-        return { username: this.username, notes: this.notes, note_id: this.note_id };
+        return { username: this.username, notes: this.notes, comments: this.comments };
     };
     return UsersModel;
 }());

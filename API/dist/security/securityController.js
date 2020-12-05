@@ -31,7 +31,7 @@ var SecurityController = /** @class */ (function () {
     //expects email and password fields to be set in the body of the post request
     //sends a success message to caller on success, or a failure status code on failure
     SecurityController.prototype.register = function (req, res, next) {
-        var user = new userModel_1.UserModel(req.body.email, req.body.password);
+        var user = new userModel_1.UserModel(req.body.email, req.body.password, req.body.username);
         SecurityController.db.getOneRecord(SecurityController.usersTable, { email: req.body.email })
             .then(function (userRecord) {
             if (userRecord)
@@ -55,7 +55,7 @@ var SecurityController = /** @class */ (function () {
     SecurityController.prototype.changePwd = function (req, res, next) {
         if (!req.body.password)
             res.status(400).send({ fn: 'changePwd', status: 'failure' }).end();
-        var user = new userModel_1.UserModel(req.body.authUser.email, req.body.password);
+        var user = new userModel_1.UserModel(req.body.authUser.email, req.body.password, req.body.username);
         SecurityController.db.updateRecord(SecurityController.usersTable, { email: user.email }, { $set: { password: user.password } }).then(function (result) {
             if (result)
                 res.send({ fn: 'changePwd', status: 'success' }).end();

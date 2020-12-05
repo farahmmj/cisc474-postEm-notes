@@ -4,6 +4,9 @@ import bcrypt from 'bcrypt';
 export class UserModel{
     id?='';
     email = '';
+    username = '';
+    notes= '';
+    comments = '';
     private _password='';
 
     //when user password is set through here, it is stored encrypted
@@ -14,20 +17,22 @@ export class UserModel{
     get password():string{return this._password;}
 
     //encrypts password
-    public constructor(email:string,password:string){
+    public constructor(email:string,password:string, username:string){
         this.email=email;
         this.password=password;
+        this.username = username;
     }
 
     //does not encrypt password, expects already encrypted password
     static fromObject=(obj:any):UserModel=>{
-        const mdl=new UserModel(obj.email,'');
+        const mdl=new UserModel(obj.email,'',obj.username);
         mdl._password=obj.password;
+        mdl.username=obj.username;
         return mdl;
     }
 
     //includes encrypted password
-    toObject=(): any=> ({email: this.email,password: this.password});
+    toObject=(): any=> ({email: this.email,password: this.password, username:this.username});
 
     //compares unencrypted password to encrypted password
     validatePassword(password:string):boolean{
