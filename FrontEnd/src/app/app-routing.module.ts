@@ -6,11 +6,6 @@ import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-/*
-{path:'',redirectTo:'home',pathMatch:'full'},
-  {path:'home', component: HomeComponent},
-  {path:'about',component: AboutComponent}
-*/
 const routes: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent},
