@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>PostEm Notes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <title>Home page</title>
+    <link rel="stylesheet" href="login.css">
+
+    <style>
+        .center {
+            text-align: center;
+        }
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body style="background-color:#f8f7f7;">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse" style="background-color:rgb(184, 226, 231)">
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand navbar-default">PostEm Notes</a>
+            </div>
+
+
+            <form class="navbar-form navbar-left" action="/action_page.php">
+
+                <a id="logoutBtn" class="btn btn-default" style="position:absolute; left:90%"
+                    href="home.html">Return to Home</a>
+            </form>
+
+        </div>
+    </nav>
+
+
+    <!-- Page Title -->
+    <h1 class="center" style="font-family: Lucida Sans Unicode, Lucida Grande, sans-serif">Search for Notes</h1>    
+
+    <!-- Search Group -->
+    <div class="container" style="background-color: rgb(236, 236, 236);">
+        <div style="flex-grow: 1; margin: auto;">
+            <h4>Search Criteria</h4>
+            <form>
+                <input type="radio" id="class" name="criteria" value="class">
+                <label for="class">Class</label><br>
+                <input type="radio" id="professor" name="criteria" value="professor">
+                <label for="professor">Professor</label><br>
+                <input type="radio" id="student" name="criteria" value="student">
+                <label for="student">Student</label>
+                <input type="text" id="search"><br>
+                <button>Search</button>
+            </form>
+        </div>
+        <div style="flex-grow: 1; margin: auto;">
+            <form action="/action_page.php">
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Search Results -->
+    <div class="container" style="background-color: rgb(236, 236, 236);">
+        <div class="grid">
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+            <div class="grid__item">
+                <p>Class Name</p>
+                <p>x Note Available</p>
+                <p>Taught by X Professors</p>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+</html>

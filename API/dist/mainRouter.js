@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
@@ -18,6 +18,7 @@ var AppRouter_1 = require("./common/AppRouter");
 var securityrouter_1 = require("./security/securityrouter");
 var projectsRouter_1 = require("./projects/projectsRouter");
 var usersRouter_1 = require("./users/usersRouter");
+var classesRouter_1 = require("./classes/classesRouter");
 //root router for the API
 var MainRouter = /** @class */ (function (_super) {
     __extends(MainRouter, _super);
@@ -30,6 +31,7 @@ var MainRouter = /** @class */ (function (_super) {
         this.addRouter('/projects', new projectsRouter_1.ProjectsRouter());
         //Adding my stuff here
         this.addRouter('/users', new usersRouter_1.UsersRouter());
+        this.addRouter('/classes', new classesRouter_1.ClassesRouter());
     };
     return MainRouter;
 }(AppRouter_1.AppRouter));

@@ -10,20 +10,15 @@ export class ClassesRouter extends AppRouter{
 
     //sets up the routes within this module shows an example of a route that requires authorization, and one that does not
     setupRoutes(): void {   
-        //For debugging purposes
-        //this.expressRouter.get('/', UsersRouter.useController.getUsers); 
         
-        //PLEASE REMEBER THAT NOTE-ID HAS TO BE IMPLEMENTED!
 
-        this.expressRouter.get('/:class',ClassesRouter.useController.getClass);
-        //this.expressRouter.get('/:username/notes', UsersRouter.useController.getNotes);
-        this.expressRouter.get('/:class_id/notes', ClassesRouter.useController.getNote);
-        this.expressRouter.post('/',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addClass);
-        this.expressRouter.post('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addNote);
-        this.expressRouter.put('/:class/:class_id',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateClass);
-        this.expressRouter.put('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateNotes);
-        //this.expressRouter.delete('/:username/:id',[SecurityMiddleware.RequireAuth],UsersRouter.useController.deleteUser);
-        this.expressRouter.delete('/:class_id/notes/:noteid',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.deleteNotes);
+        this.expressRouter.get('/:classId',ClassesRouter.useController.getClass);
+        //this.expressRouter.get('/:classId/notes', ClassesRouter.useController.getNote);
+        //this.expressRouter.post('/',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addClass);
+        //this.expressRouter.post('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addNote);
+        //this.expressRouter.put('/:class/:class_id',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateClass);
+        //this.expressRouter.put('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateNotes);
+        //this.expressRouter.delete('/:class_id/notes/:noteid',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.deleteNotes);
 
         
     }    
