@@ -1,11 +1,15 @@
 import express, { RequestHandler } from 'express';
 import { UsersModel } from './usersModel';
+import {ClassesController} from '../classes/classesController'
 import { Database } from '../common/MongoDB';
 import { Config } from '../config';
 
 export class UsersController {
     static db: Database = new Database(Config.url, "security");
     static usersTable = 'users';
+
+    static classController: ClassesController=new ClassesController();
+
     
 
 
@@ -30,14 +34,17 @@ export class UsersController {
    addNote(req: express.Request, res: express.Response){
     const id = Database.stringToId(req.params.id)
     const notes = req.body.notes;
+    const classId = req.body.classId;
     UsersController.db.getOneRecord(UsersController.usersTable, { _id:id})
             .then((results) => {
                 if (!results.notes){
                     results.notes=[];
                 }
                 
-                results.notes.push({id: Database.newId(),note: notes});
+                results.notes.push({id: Database.newId(),note: notes, classId:classId});
                 
+            
+                UsersController.classController.addClass(req,res);
                 UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes:results.notes }})
                 .then((results) => results ? (res.send({ fn: 'updateNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end())
                 .catch(err => res.send({ fn: 'addNotes', status: 'failure', data: err }).end());

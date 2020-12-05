@@ -15,7 +15,6 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClassesRouter = void 0;
 var AppRouter_1 = require("../common/AppRouter");
-var securityMiddleware_1 = require("../security/securityMiddleware");
 var classesController_1 = require("./classesController");
 var ClassesRouter = /** @class */ (function (_super) {
     __extends(ClassesRouter, _super);
@@ -27,15 +26,13 @@ var ClassesRouter = /** @class */ (function (_super) {
         //For debugging purposes
         //this.expressRouter.get('/', UsersRouter.useController.getUsers); 
         //PLEASE REMEBER THAT NOTE-ID HAS TO BE IMPLEMENTED!
-        this.expressRouter.get('/:class', ClassesRouter.useController.getClass);
-        //this.expressRouter.get('/:username/notes', UsersRouter.useController.getNotes);
-        this.expressRouter.get('/:class_id/notes', ClassesRouter.useController.getNote);
-        this.expressRouter.post('/', [securityMiddleware_1.SecurityMiddleware.RequireAuth], ClassesRouter.useController.addClass);
-        this.expressRouter.post('/:class_id/notes', [securityMiddleware_1.SecurityMiddleware.RequireAuth], ClassesRouter.useController.addNote);
-        this.expressRouter.put('/:class/:class_id', [securityMiddleware_1.SecurityMiddleware.RequireAuth], ClassesRouter.useController.updateClass);
-        this.expressRouter.put('/:class_id/notes', [securityMiddleware_1.SecurityMiddleware.RequireAuth], ClassesRouter.useController.updateNotes);
-        //this.expressRouter.delete('/:username/:id',[SecurityMiddleware.RequireAuth],UsersRouter.useController.deleteUser);
-        this.expressRouter.delete('/:class_id/notes/:noteid', [securityMiddleware_1.SecurityMiddleware.RequireAuth], ClassesRouter.useController.deleteNotes);
+        this.expressRouter.get('/:classId', ClassesRouter.useController.getClass);
+        this.expressRouter.get('/:classId/notes', ClassesRouter.useController.getNote);
+        //this.expressRouter.post('/',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addClass);
+        //this.expressRouter.post('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addNote);
+        //this.expressRouter.put('/:class/:class_id',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateClass);
+        //this.expressRouter.put('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateNotes);
+        //this.expressRouter.delete('/:class_id/notes/:noteid',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.deleteNotes);
     };
     ClassesRouter.useController = new classesController_1.ClassesController();
     return ClassesRouter;

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 var usersModel_1 = require("./usersModel");
+var classesController_1 = require("../classes/classesController");
 var MongoDB_1 = require("../common/MongoDB");
 var config_1 = require("../config");
 var UsersController = /** @class */ (function () {
@@ -24,12 +25,14 @@ var UsersController = /** @class */ (function () {
     UsersController.prototype.addNote = function (req, res) {
         var id = MongoDB_1.Database.stringToId(req.params.id);
         var notes = req.body.notes;
+        var classId = req.body.classId;
         UsersController.db.getOneRecord(UsersController.usersTable, { _id: id })
             .then(function (results) {
             if (!results.notes) {
                 results.notes = [];
             }
-            results.notes.push({ id: MongoDB_1.Database.newId(), note: notes });
+            results.notes.push({ id: MongoDB_1.Database.newId(), note: notes, classId: classId });
+            UsersController.classController.addClass(req, res);
             UsersController.db.updateRecord(UsersController.usersTable, { _id: id }, { $set: { notes: results.notes } })
                 .then(function (results) { return results ? (res.send({ fn: 'updateNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end(); })
                 .catch(function (err) { return res.send({ fn: 'addNotes', status: 'failure', data: err }).end(); });
@@ -109,6 +112,7 @@ var UsersController = /** @class */ (function () {
     };
     UsersController.db = new MongoDB_1.Database(config_1.Config.url, "security");
     UsersController.usersTable = 'users';
+    UsersController.classController = new classesController_1.ClassesController();
     return UsersController;
 }());
 exports.UsersController = UsersController;
