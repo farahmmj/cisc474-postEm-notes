@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.wrap {
+  max-width: 100vh;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid>* {
+  background: rgb(184, 226, 231);
+  padding: 20px;
+  margin: 2px;
+  border: 1px solid black;
+  text-align: center;
+}
