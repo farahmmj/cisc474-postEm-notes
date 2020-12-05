@@ -1,1 +1,13 @@
-<p>signup works!</p>
+<div id="container">
+    <h1>Sign Up for PostEm-Notes</h1>
+    <form [formGroup]="signupForm">
+        <div>
+            <input type="email" placeholder="Email" formControlName="email" /><br>
+            <input type="text" placeholder="Username" formControlName="username" /><br>
+            <input type="password" placeholder="Password" formControlName="password" /><br>
+            <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" /><br>
+            <button>Sign Up</button>
+        </div>
+        <div><p>Already have an account? <a routerLink="/login">Login</a></p></div>
+    </form> 
+</div>
