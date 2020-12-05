@@ -11,6 +11,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchComponent,
     WelcomeComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
