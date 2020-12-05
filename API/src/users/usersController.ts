@@ -4,21 +4,12 @@ import { Database } from '../common/MongoDB';
 import { Config } from '../config';
 
 export class UsersController {
-    static db: Database = new Database(Config.url, "users");
+    static db: Database = new Database(Config.url, "security");
     static usersTable = 'users';
-    //static notesTable = 'notes';
+    
 
 
 
-    //getUsers
-    //sends a json object with all users in the system that match :name
-    /*getUsers(req: express.Request, res: express.Response) {
-        const username = req.params.username;
-        UsersController.db.getRecords(UsersController.usersTable, { username: username })
-            .then((results) => res.send({ fn: 'getUsers', status: 'success', data: results }).end())
-            .catch((reason) => res.status(500).send(reason).end());
-
-    }*/
     getUser(req: express.Request, res: express.Response) {
         const username = req.params.username;
         //const id = Database.stringToId(req.params.id);
@@ -52,37 +43,14 @@ export class UsersController {
                 .catch(err => res.send({ fn: 'addNotes', status: 'failure', data: err }).end());
             })
             .catch((reason) => res.status(500).send(reason).end());
-    //const username = req.params.username;
-
 
         
     }
 
-    /*getNotes(req: express.Request, res: express.Response) {
-
-        const username = req.params.username;
-        const notes = req.body.notes;
-        //const id = Database.stringToId(req.params.id);
-        UsersController.db.getOneRecord(UsersController.usersTable, { username: username, notes:notes })
-            .then((results) => res.send({ fn: 'getNotes', status: 'success', data: results}).end())
-            .catch((reason) => res.status(500).send(reason).end());
-
-            UsersController.db.getRecords(UsersController.usersTable)
-            .then(results => {
-                //extracts just the semester
-                let notes = results.map((x: any) => x.notes);
-                //removes duplciates
-                notes = notes.filter((value: string, index: number, array: any[]) =>
-                    !array.filter((v, i) => value === v && i < index).length);
-                res.send({ fn: 'getNotes', status: 'success', data: { notes: notes } })
-            })
-            .catch((reason) => res.status(500).send(reason).end());
-
-    }*/
 
     getNote(req: express.Request, res: express.Response) {
 
-        const username = req.params.username;
+       // const username = req.params.username;
         const id = Database.stringToId(req.params.id);
         //const notes_id = req.params.notes_id;
         UsersController.db.getOneRecord(UsersController.usersTable, {_id: id })
@@ -111,8 +79,8 @@ export class UsersController {
 
     }
 
-    //Ask: Can you just delete a user and leave the notes in the system?
-    /*deleteUser(req: express.Request, res: express.Response) {
+    
+    deleteUser(req: express.Request, res: express.Response) {
 
         const id = Database.stringToId(req.params.id);
         const username = req.params.username;
@@ -120,10 +88,9 @@ export class UsersController {
             .then((results) => results ? (res.send({ fn: 'deleteUser', status: 'success' })) : (res.send({ fn: 'deleteNotes', status: 'failure', data: 'Not found' })).end())
             .catch((reason) => res.status(500).send(reason).end());
 
-    }*/
+    }
 
-    //Question follow-up
-    deleteNotes(req: express.Request, res: express.Response) {
+    /*deleteNotes(req: express.Request, res: express.Response) {
 
         const id = Database.stringToId(req.params.id);
         const note_id = Database.stringToId(req.params.noteid);
@@ -139,6 +106,37 @@ export class UsersController {
             }
         })
         .catch((reason) => res.status(500).send(reason).end());
+    }*/
+
+    addComments(req: express.Request, res: express.Response){
+        const id = Database.stringToId(req.params.id);
+        const note_id = Database.stringToId(req.params.noteid);
+        const comments = req.body.comments;
+
+        UsersController.db.getOneRecord(UsersController.usersTable, { _id:id})
+        .then((results) => {
+            let notes=results.notes.filter((item:any)=>item.id.equals(note_id));
+            if (notes.length==0){
+                return res.send({status: 'error'});
+            }
+            
+            if (!notes[0].comments){
+                notes[0].comments=[];
+            }
+            notes[0].comments.push(comments);
+            
+            UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes: results.notes }})
+            .then((results) => results ? (res.send({ fn: 'addComments', status: 'success' })) : (res.send({ fn: 'addComments', status: 'failure', data: 'Not found' })).end())
+            .catch(err => res.send({ fn: 'addComments', status: 'failure', data: err }).end());
+        })
+        .catch((reason) => res.status(500).send(reason).end());
+
+    }
+
+
+    //Might be implemented depending on what the outcome of getting notes is...
+    getComments(req: express.Request, res: express.Response){
+        
     }
 
 }
