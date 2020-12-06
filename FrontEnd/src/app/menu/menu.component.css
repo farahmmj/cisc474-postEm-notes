@@ -22,6 +22,7 @@
     display: inline-block;
     font-size: 16px;
     font-family: Optima, sans-serif;
+    float: right;
       }
 
 .divider{
@@ -29,3 +30,24 @@ width:5px;
 height:auto;
 display:inline-block;
     }
+
+/* the search bar */
+#input{
+    display: block;
+    width: 441px;
+    max-width: 100%;
+    height: 40px;
+    border: 3px;
+    background-color:whitesmoke;
+    border-bottom-left-radius: 41px;
+    border-bottom-right-radius: 41px;
+    border-top-left-radius: 41px;
+    border-top-right-radius: 150px;
+    box-shadow: 0 17px 40px 0 rgba(75, 128, 182, 0.07);
+    margin: auto;
+    position: relative;
+    font-size: 17px;
+    color: #a7b4c1;
+    transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+}
