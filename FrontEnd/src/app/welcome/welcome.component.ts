@@ -12,12 +12,6 @@ export class WelcomeComponent implements OnInit {
   constructor(public svc:PostEmService, public router:Router) { }
 
   // Redirects the user to home page if already logged in.
-  ngOnInit(): void {
-    this.svc.CurrentUser.subscribe(user => {
-      if (user != undefined) {
-        this.router.navigate(['home']);
-      }
-    });
-  }
+  ngOnInit(): void {}
 
 }

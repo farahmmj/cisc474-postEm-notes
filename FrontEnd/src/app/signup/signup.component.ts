@@ -16,15 +16,20 @@ export class SignupComponent implements OnInit {
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
   });
-  
+
   constructor(public svc:PostEmService, public router:Router) { }
 
-  // Redirects the user to home page if already logged on.
   ngOnInit(): void {
     this.svc.CurrentUser.subscribe(user => {
-      if (user != undefined) {
-        this.router.navigate(['home']);
-      }
+      this.router.navigate(['home']);
+    });
+  }
+
+  public signup(): void {
+    this.svc.signup("email", "user", "pass").subscribe((data:any) => {
+      this.router.navigate(['login']);
+    }, error => {
+        // display error message
     });
   }
 

@@ -8,12 +8,12 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class PostEmService {
 
-  private path = '';
+  private path = 'http://localhost:3000/api/';
   private _token:string='';
   CurrentUser: ReplaySubject<string>=new ReplaySubject<string>();
 
   constructor(private http:HttpClient) {
-    this.CurrentUser.next('test');
+    this.CurrentUser.next(undefined);
    }
 
   get token():string {
@@ -34,30 +34,29 @@ export class PostEmService {
   }
 
   signup(email: string, username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.path + 'register', {email: email, username: username, password: password})
-      .pipe(map(value => {
-        return true;
-      }), catchError(err => {
-        return throwError(err.message || 'server error');
-      }));
+    return this.http.post<any>(this.path + 'security/register', {email: email, username: username, password: password});
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.path + 'login', {email: email, password: password})
-      .pipe(map(user => {
-        this._token = user.data.token;
-        this.CurrentUser.next(user.data.user.email);
-        return user.data.user;
-      }), catchError(err => {
-        this.CurrentUser.next(undefined);
-        return throwError(err.message || 'server error');
-      }));
+    return this.http.post<any>(this.path + 'security/login', {email: email, password: password});
   }
 
   logout() {
     this._token = '';
     this.CurrentUser.next(undefined);
   }
+
+  // get 
+  getClassesByProfessor(professor: string) {
+    // name, professor, notes[]
+  }
+
+  // get
+  getClassesByName(className: string) {
+
+  }
+
+
 
   
 }
