@@ -15,7 +15,7 @@ export class MainRouter extends AppRouter{
         this.addRouter('/security',new SecurityRouter());        
         this.addRouter('/projects',new ProjectsRouter());
 
-        //Adding my stuff here
+        //Adding stuff here
         this.addRouter('/users', new UsersRouter());
         this.addRouter('/classes', new ClassesRouter());
     }

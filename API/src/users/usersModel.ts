@@ -5,6 +5,9 @@ export class UsersModel{
     comments = '';
     classId = '';
     
+    //Implementing the professor search
+    professor = '';
+    
     
     
     static fromObject(object:any):UsersModel{
@@ -13,10 +16,12 @@ export class UsersModel{
         p.notes = object.notes;
         p.comments = object.comments;
         p.classId = object.classId;
+        p.professor = object.professor;
         
         return p;
     }
     toObject():any{
-        return {username:this.username, notes:this.notes, comments:this.comments, classId:this.classId};
+        return {username:this.username, notes:this.notes, comments:this.comments, classId:this.classId, 
+        professor: this.professor};
     }
 }
