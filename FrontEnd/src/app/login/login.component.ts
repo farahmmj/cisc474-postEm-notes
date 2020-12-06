@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostEmService } from '../post-em.service';
 
@@ -10,22 +10,34 @@ import { PostEmService } from '../post-em.service';
 })
 export class LoginComponent implements OnInit {
 
+  loading = false;
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
   });
 
   constructor(public svc:PostEmService, public router:Router) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {  }
+
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 
   public login(): void {
-    this.svc.login("hello", "world").subscribe((data:any) => {
-
+    this.loading = true;
+    this.svc.login(this.email.value, this.password.value).subscribe((data:any) => {
+      this.loading = false;
+      this.svc.token = data.token;
+      this.svc.CurrentUser.next(data.user.email);
+      this.router.navigate(['home']);
     }, error => {
-
+      alert(error.message);
+      this.loading = false;
     })
   }
 }
