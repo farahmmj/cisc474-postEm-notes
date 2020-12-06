@@ -26,7 +26,7 @@ var UsersRouter = /** @class */ (function (_super) {
     UsersRouter.prototype.setupRoutes = function () {
         this.expressRouter.get('/:username', UsersRouter.useController.getUser);
         //this.expressRouter.get('/:username/notes', UsersRouter.useController.getNotes);
-        this.expressRouter.get('/:id/notes', UsersRouter.useController.getNote);
+        this.expressRouter.get('/:username/notes', UsersRouter.useController.getNote);
         this.expressRouter.post('/', [securityMiddleware_1.SecurityMiddleware.RequireAuth], UsersRouter.useController.addUser);
         this.expressRouter.post('/:id/notes', [securityMiddleware_1.SecurityMiddleware.RequireAuth], UsersRouter.useController.addNote);
         this.expressRouter.put('/:username/:id', [securityMiddleware_1.SecurityMiddleware.RequireAuth], UsersRouter.useController.updateUser);
