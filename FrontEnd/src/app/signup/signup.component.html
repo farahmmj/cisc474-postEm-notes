@@ -4,13 +4,13 @@
         <div id="div">
             <input id="input" type="email" placeholder="Email" formControlName="email" />
             <div class="divider"></div>
-            <input id="input" type="text" placeholder="Username" formControlName="username" />
+            <input id="input" type="text" placeholder="Username" formControlName="" />
             <div class="divider"></div>
             <input id="input" type="password" placeholder="Password" formControlName="password" />
             <div class="divider"></div>
             <input id="input" type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
-           <br>
-            <button>Sign Up</button>
+            <br>
+            <button (click)="signup()">Sign Up</button>
         </div>
         <div><p>Already have an account? <a routerLink="/login">Login</a></p></div>
     </form> 

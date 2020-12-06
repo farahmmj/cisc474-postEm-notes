@@ -13,7 +13,7 @@ export class UsersController {
     
 
 
-
+        //Might not need it because of web token
     getUser(req: express.Request, res: express.Response) {
         const username = req.params.username;
         //const id = Database.stringToId(req.params.id);
@@ -34,6 +34,7 @@ export class UsersController {
    addNote(req: express.Request, res: express.Response){
     const id = Database.stringToId(req.params.id)
     const notes = req.body.notes;
+    const professor = req.body.professor;
     const classId = req.body.classId;
     UsersController.db.getOneRecord(UsersController.usersTable, { _id:id})
             .then((results) => {
@@ -41,11 +42,11 @@ export class UsersController {
                     results.notes=[];
                 }
                 
-                results.notes.push({id: Database.newId(),note: notes, classId:classId});
+                results.notes.push({id: Database.newId(),note: notes, classId:classId, professor:professor});
                 
             
                 UsersController.classController.addClass(req,res);
-                UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes:results.notes }})
+                UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes:results.notes}})
                 .then((results) => results ? (res.send({ fn: 'updateNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end())
                 .catch(err => res.send({ fn: 'addNotes', status: 'failure', data: err }).end());
             })
