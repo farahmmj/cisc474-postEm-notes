@@ -13,7 +13,7 @@ export class PostEmService {
   CurrentUser: ReplaySubject<string>=new ReplaySubject<string>();
 
   constructor(private http:HttpClient) {
-    this.CurrentUser.next('test');
+    this.CurrentUser.next(undefined);
    }
 
   get token():string {

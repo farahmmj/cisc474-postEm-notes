@@ -3,6 +3,28 @@
     text-align: center;
 }
 
-.cenzter {
-    font-family: Lucida Sans Unicode, Lucida Grande, sans-serif
+.center {
+    font-family: Optima, sans-serif;
+    color: #54442e;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+#button{
+
+    background-color: #c9af8d;
+    border: none;
+    color: whitesmoke;
+    border-color: #c9af8d;
+    border-radius: 3px;
+    border-width: 3px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 50px;
+    font-weight: 200;
+    font-family: Optima, sans-serif;
+  
 }
