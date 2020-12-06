@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UploadComponent } from './upload/upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component';
+import { MyNotesComponent } from './my-notes/my-notes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     MenuComponent,
     FooterComponent,
     UploadComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    MyNotesComponent
   ],
   imports: [
     BrowserModule,
