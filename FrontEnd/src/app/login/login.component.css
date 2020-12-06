@@ -18,7 +18,8 @@ button{
     font-weight: 200;
     font-family: Optima, sans-serif;
   
-}#input{
+}
+#input{
         display: block;
         width: 441px;
         max-width: 100%;

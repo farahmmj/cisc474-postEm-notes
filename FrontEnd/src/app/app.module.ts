@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadComponent } from './upload/upload.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     WelcomeComponent,
     MenuComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,

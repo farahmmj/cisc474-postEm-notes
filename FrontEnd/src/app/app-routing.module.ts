@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 import { UploadComponent } from './upload/upload.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'upload', component: UploadComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'uploadFile', component: UploadFileComponent},
 ];
 
 @NgModule({

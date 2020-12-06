@@ -12,11 +12,10 @@ export class ClassesController {
 
 
     getClass(req: express.Request, res: express.Response) {
-        const classId = req.params.class_id;
-        //const id = Database.stringToId(req.params.id);
-        //const notes = req.params.notes;
-        ClassesController.db.getOneRecord(ClassesController.ClassesTable, { classId: classId})
-            .then((results) => res.send({ fn: 'getClass', status: 'success', data: results._id}).end())
+        const classId = req.params.classId;
+        
+        ClassesController.db.getRecords(ClassesController.ClassesTable, { classId: classId })
+            .then((results) => res.send({ fn: 'getClasses', status: 'success', data: results }).end())
             .catch((reason) => res.status(500).send(reason).end());
     }
 
@@ -24,6 +23,7 @@ export class ClassesController {
         let exist = false;
         const id = Database.stringToId(req.params.id);
         const classId = req.body.classId;
+        const professor = req.body.professor;
         ClassesController.db.getRecords(ClassesController.ClassesTable, { classId:classId})
         .then((results) => {
             console.log(results.classId);
