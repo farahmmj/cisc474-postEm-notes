@@ -12,7 +12,8 @@ export class ClassesRouter extends AppRouter{
     setupRoutes(): void {   
         
 
-        this.expressRouter.get('/:classId',ClassesRouter.useController.getClass);
+        this.expressRouter.get('/courses/:classId',ClassesRouter.useController.getClassByID);
+        this.expressRouter.get('/professors/:professor',ClassesRouter.useController.getClassByProf);
         //this.expressRouter.get('/:classId/notes', ClassesRouter.useController.getNote);
         //this.expressRouter.post('/',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addClass);
         //this.expressRouter.post('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addNote);

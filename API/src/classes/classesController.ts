@@ -11,29 +11,41 @@ export class ClassesController {
     
 
 
-    getClass(req: express.Request, res: express.Response) {
+    getClassByID(req: express.Request, res: express.Response) {
         const classId = req.params.classId;
         
         ClassesController.db.getRecords(ClassesController.ClassesTable, { classId: classId })
-            .then((results) => res.send({ fn: 'getClasses', status: 'success', data: results }).end())
+            .then((results) => res.send({ fn: 'getClassByID', status: 'success', data: results }).end())
+            .catch((reason) => res.status(500).send(reason).end());
+    }
+
+    getClassByProf(req: express.Request, res: express.Response) {
+        const professor = req.params.professor;
+        
+        ClassesController.db.getRecords(ClassesController.ClassesTable, { professor: professor })
+            .then((results) => res.send({ fn: 'getClassByProf', status: 'success', data: results }).end())
             .catch((reason) => res.status(500).send(reason).end());
     }
 
     addClass(req: express.Request, res: express.Response) {
-        let exist = false;
+        let class_exist = false;
+        let prof_exist = false;
         const id = Database.stringToId(req.params.id);
         const classId = req.body.classId;
         const professor = req.body.professor;
         ClassesController.db.getRecords(ClassesController.ClassesTable, { classId:classId})
         .then((results) => {
-            console.log(results.classId);
+            //console.log(results.classId);
             for(let i=0; i<results.length; i++){
             if (results[i].classId === classId){
-                exist = true;
+                class_exist = true;
+            }
+            if (results[i].classId === classId && results[i].professor === professor) {
+                prof_exist = true;
             }
         }
                 //results.classId=[];
-                if(!exist){
+                if(!class_exist || (class_exist && !prof_exist)){
                 const use: ClassesModel = ClassesModel.fromObject(req.body);
                 ClassesController.db.addRecord(ClassesController.ClassesTable, use.toObject())
                     .then((result: boolean) => res.send({ fn: 'addClass', status: 'success' }).end())

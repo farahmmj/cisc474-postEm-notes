@@ -8,6 +8,7 @@ var config_1 = require("../config");
 var UsersController = /** @class */ (function () {
     function UsersController() {
     }
+    //Might not need it because of web token
     UsersController.prototype.getUser = function (req, res) {
         var username = req.params.username;
         //const id = Database.stringToId(req.params.id);
@@ -25,13 +26,14 @@ var UsersController = /** @class */ (function () {
     UsersController.prototype.addNote = function (req, res) {
         var id = MongoDB_1.Database.stringToId(req.params.id);
         var notes = req.body.notes;
+        var professor = req.body.professor;
         var classId = req.body.classId;
         UsersController.db.getOneRecord(UsersController.usersTable, { _id: id })
             .then(function (results) {
             if (!results.notes) {
                 results.notes = [];
             }
-            results.notes.push({ id: MongoDB_1.Database.newId(), note: notes, classId: classId });
+            results.notes.push({ id: MongoDB_1.Database.newId(), note: notes, classId: classId, professor: professor });
             UsersController.classController.addClass(req, res);
             UsersController.db.updateRecord(UsersController.usersTable, { _id: id }, { $set: { notes: results.notes } })
                 .then(function (results) { return results ? (res.send({ fn: 'updateNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end(); })
@@ -42,8 +44,9 @@ var UsersController = /** @class */ (function () {
     UsersController.prototype.getNote = function (req, res) {
         // const username = req.params.username;
         var id = MongoDB_1.Database.stringToId(req.params.id);
+        var username = req.params.username;
         //const notes_id = req.params.notes_id;
-        UsersController.db.getOneRecord(UsersController.usersTable, { _id: id })
+        UsersController.db.getOneRecord(UsersController.usersTable, { username: username })
             .then(function (results) { return res.send({ fn: 'getUser', status: 'success', data: results }).end(); })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
     };

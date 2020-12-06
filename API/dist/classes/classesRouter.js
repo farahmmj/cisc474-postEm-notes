@@ -23,11 +23,9 @@ var ClassesRouter = /** @class */ (function (_super) {
     }
     //sets up the routes within this module shows an example of a route that requires authorization, and one that does not
     ClassesRouter.prototype.setupRoutes = function () {
-        //For debugging purposes
-        //this.expressRouter.get('/', UsersRouter.useController.getUsers); 
-        //PLEASE REMEBER THAT NOTE-ID HAS TO BE IMPLEMENTED!
-        this.expressRouter.get('/:classId', ClassesRouter.useController.getClass);
-        this.expressRouter.get('/:classId/notes', ClassesRouter.useController.getNote);
+        this.expressRouter.get('/courses/:classId', ClassesRouter.useController.getClassByID);
+        this.expressRouter.get('/professors/:professor', ClassesRouter.useController.getClassByProf);
+        //this.expressRouter.get('/:classId/notes', ClassesRouter.useController.getNote);
         //this.expressRouter.post('/',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addClass);
         //this.expressRouter.post('/:class_id/notes',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.addNote);
         //this.expressRouter.put('/:class/:class_id',[SecurityMiddleware.RequireAuth],ClassesRouter.useController.updateClass);
