@@ -1,11 +1,15 @@
 <div class="container">
-    <h1>Log in to PostEm-Notes</h1>
+    <h1 id="h1"> Log in to PostEm-Notes</h1>
     <form [formGroup]="loginForm">
-        <div>
-            <input type="text" placeholder="Username" formControlName="username" /><br>
-            <input type="password" placeholder="Password" formControlName="password" /><br>
+        <div id="div">
+            <input id="input" type="text" placeholder="Username" formControlName="username" />
+            <div class="divider"></div>
+            <input id="input" type="password" placeholder="Password" formControlName="password" />
+            <br>
             <button>Login</button>
+            <br>
         </div>
+        
         <div><p>Don't have an account? <a routerLink="/signup">Sign Up</a></p></div>
     </form> 
 </div>

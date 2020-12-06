@@ -42,6 +42,8 @@
     margin: auto;
     flex-grow: 1;
     width: 100px;
+    height: 300px;
+  
   }
 
   .card img {
@@ -60,6 +62,18 @@
   
   .banner{
       font-family: Optima, sans-serif;
+      color: #54442e;
+      font-size: 35px;
+      font-weight: bold;
+      margin-left: 375px;
+  }
+
+  .banner2{
+    font-family: Optima, sans-serif;
+    color: #54442e;
+    font-size: 20px;
+    margin-left: 530px;
+
   }
   
   h3{
@@ -69,6 +83,8 @@
   .navbar-inverse{
   background-color: #ecd9c6
   }
+
+
   
   /* doodles  */
   
@@ -140,4 +156,29 @@
     height:auto;
     display:inline-block;
 }
-    
+
+#p2{
+  font-family: Optima, sans-serif;
+  color: #54442e;
+  font-weight: bold;
+  font-size: 35px;
+  margin-left: 500px;
+  
+}
+
+#p3{
+  margin-left: auto;
+  margin-right: auto;
+  width: 35em;
+}
+
+p{
+  font-family: Times, Times New Roman, serif;
+}
+
+#p4{
+  margin-left: auto;
+  margin-right: auto;
+  width: 35em;
+  text-align-last: center;
+}

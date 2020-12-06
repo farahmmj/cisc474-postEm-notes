@@ -1,11 +1,15 @@
 <div id="container">
-    <h1>Sign Up for PostEm-Notes</h1>
+    <h1 id="h1">Sign Up for PostEm-Notes</h1><br>
     <form [formGroup]="signupForm">
-        <div>
-            <input type="email" placeholder="Email" formControlName="email" /><br>
-            <input type="text" placeholder="Username" formControlName="username" /><br>
-            <input type="password" placeholder="Password" formControlName="password" /><br>
-            <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" /><br>
+        <div id="div">
+            <input id="input" type="email" placeholder="Email" formControlName="email" />
+            <div class="divider"></div>
+            <input id="input" type="text" placeholder="Username" formControlName="username" />
+            <div class="divider"></div>
+            <input id="input" type="password" placeholder="Password" formControlName="password" />
+            <div class="divider"></div>
+            <input id="input" type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+           <br>
             <button>Sign Up</button>
         </div>
         <div><p>Already have an account? <a routerLink="/login">Login</a></p></div>

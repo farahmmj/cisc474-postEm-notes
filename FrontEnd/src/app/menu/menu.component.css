@@ -5,27 +5,25 @@
 
 .nav-link{
     color: whitesmoke;
-    font-family: Arial, Helvetica, sans-serif;
-    position: 
+    font-family:URW Chancery L, cursive;
+    font-size: 25px;
+    margin-left: 640px;
+
 }
 
 .button{
     background-color: whitesmoke;
-    border: none;
     color: #c9af8d;
     border-color: #c9af8d;
     border-radius: 3px;
     border-width: 3px;
-    padding: 15px 32px;
+    padding: 5px 20px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-top: 50px;
-    font-weight: 200;
     font-family: Optima, sans-serif;
-    margin-right: auto;
       }
+
 .divider{
 width:5px;
 height:auto;
