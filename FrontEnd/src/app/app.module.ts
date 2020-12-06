@@ -15,6 +15,7 @@ import { UploadComponent } from './upload/upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { MyNotesComponent } from './my-notes/my-notes.component';
+import { ViewClassComponent } from './view-class/view-class.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MyNotesComponent } from './my-notes/my-notes.component';
     FooterComponent,
     UploadComponent,
     UploadFileComponent,
-    MyNotesComponent
+    MyNotesComponent,
+    ViewClassComponent
   ],
   imports: [
     BrowserModule,
