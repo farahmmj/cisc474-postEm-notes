@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
+    if (!this.loginForm.valid) {
+      return;
+    }
+
     this.loading = true;
     this.svc.login(this.email.value, this.password.value).subscribe((data:any) => {
       this.loading = false;
