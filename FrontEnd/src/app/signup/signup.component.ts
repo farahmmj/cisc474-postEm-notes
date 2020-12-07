@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required]),
   });
 
-  constructor(public svc:PostEmService, public router:Router) { }
+  constructor(public svc:PostEmService, public router:Router) {}
 
   ngOnInit(): void { }
 
@@ -53,11 +53,4 @@ export class SignupComponent implements OnInit {
       alert(error.message);
     });
   }
-}
-
-function ValidatePassword(control: AbstractControl): {[key: string]: any} | null  {
-  if (control.value && control.value.length != 10) {
-    return { 'phoneNumberInvalid': true };
-  }
-  return null;
 }

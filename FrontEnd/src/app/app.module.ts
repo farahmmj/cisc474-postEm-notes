@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { MyNotesComponent } from './my-notes/my-notes.component';
 import { ViewClassComponent } from './view-class/view-class.component';
+import { ViewNoteComponent } from './view-note/view-note.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ViewClassComponent } from './view-class/view-class.component';
     UploadComponent,
     UploadFileComponent,
     MyNotesComponent,
-    ViewClassComponent
+    ViewClassComponent,
+    ViewNoteComponent
   ],
   imports: [
     BrowserModule,

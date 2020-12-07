@@ -23,7 +23,7 @@
 
             <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
                 <div *ngIf="confirmPassword.errors.required">Confirm Password is required.</div>
-                <div *ngIf="confirmPassword.errors.pattern">Passwords do not match.</div>
+                <div *ngIf="confirmPassword.errors.match">Password do not match.</div>
             </div>
             <input id="input" type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
             <br>
