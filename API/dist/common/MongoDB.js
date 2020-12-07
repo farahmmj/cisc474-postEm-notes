@@ -82,6 +82,23 @@ var Database = /** @class */ (function () {
             });
         });
     };
+    //getRecords
+    // collection: the name of the collection to get from.
+    // query: a mongo query object
+    // returns a promise to an array of records
+    Database.prototype.getAllRecords = function (collection) {
+        var dbname = this.dbName;
+        var url = this.url;
+        return new Promise(function (resolve, reject) {
+            mongodb_1.MongoClient.connect(url, function (err, db) {
+                if (err)
+                    reject(err);
+                var dbo = db.db(dbname);
+                dbo.collection(collection);
+                db.close();
+            });
+        });
+    };
     //getOneRecords
     // collection: the name of the collection to get from.
     // query: a mongo query object

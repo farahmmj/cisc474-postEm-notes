@@ -1,4 +1,4 @@
-import express, { RequestHandler } from 'express';
+import express, { query, RequestHandler } from 'express';
 import { UsersModel } from './usersModel';
 import {ClassesController} from '../classes/classesController'
 import { Database } from '../common/MongoDB';
@@ -43,6 +43,8 @@ export class UsersController {
     const notes = req.body.notes;
     const professor = req.body.professor;
     const classId = req.body.classId;
+    const data = req.body;
+    console.log(data.authUser);
     let note_id
     UsersController.db.getOneRecord(UsersController.usersTable, { username:username})
             .then((results) => {
@@ -94,8 +96,12 @@ export class UsersController {
          const id = Database.stringToId(req.params.id);
          const username = req.params.username;
          //const notes_id = req.params.notes_id;
-         UsersController.db.getOneRecord(UsersController.usersTable, {username: username})
-             .then((results) => res.send({ fn: 'getUser', status: 'success', data: results.notes[0] }).end())
+         UsersController.db.getRecords(UsersController.usersTable, {})
+             .then((results) => {
+                  
+                 
+                 res.send({ fn: 'getUser', status: 'success', data: results }).end()
+                })
              .catch((reason) => res.status(500).send(reason).end());
  
      }
