@@ -149,7 +149,7 @@ export class UsersController {
 
     }
 
-    /*deleteNotes(req: express.Request, res: express.Response) {
+    deleteNotes(req: express.Request, res: express.Response) {
 
         const id = Database.stringToId(req.params.id);
         const note_id = Database.stringToId(req.params.noteid);
@@ -165,7 +165,7 @@ export class UsersController {
             }
         })
         .catch((reason) => res.status(500).send(reason).end());
-    }*/
+    }
 
     addComments(req: express.Request, res: express.Response){
         const id = Database.stringToId(req.params.id);
