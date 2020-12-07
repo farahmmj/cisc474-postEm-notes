@@ -14,7 +14,15 @@ var UsersController = /** @class */ (function () {
         //const id = Database.stringToId(req.params.id);
         //const notes = req.params.notes;
         UsersController.db.getOneRecord(UsersController.usersTable, { username: username })
-            .then(function (results) { return res.send({ fn: 'getUser', status: 'success', data: results._id }).end(); })
+            .then(function (results) { return res.send({ fn: 'getUser', status: 'success', data: results.notes }).end(); })
+            .catch(function (reason) { return res.status(500).send(reason).end(); });
+    };
+    UsersController.prototype.getUserNotes = function (req, res) {
+        var username = req.params.username;
+        //const id = Database.stringToId(req.params.id);
+        //const notes = req.params.notes;
+        UsersController.db.getOneRecord(UsersController.usersTable, { username: username })
+            .then(function (results) { return res.send({ fn: 'getUser', status: 'success', data: results }).end(); })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
     };
     UsersController.prototype.addUser = function (req, res) {
@@ -114,23 +122,20 @@ var UsersController = /** @class */ (function () {
             .then(function (results) { return results ? (res.send({ fn: 'deleteUser', status: 'success' })) : (res.send({ fn: 'deleteNotes', status: 'failure', data: 'Not found' })).end(); })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
     };
-    /*deleteNotes(req: express.Request, res: express.Response) {
-
-        const id = Database.stringToId(req.params.id);
-        const note_id = Database.stringToId(req.params.noteid);
-
-        UsersController.db.getOneRecord(UsersController.usersTable, { _id:id})
-        .then((results) => {
-            if (results.notes){
-                
-                results.notes=results.notes.filter((item:any) =>!item.id.equals(note_id));
-                UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes:results.notes }})
-                    .then((results) => results ? (res.send({ fn: 'deleteNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end())
-                    .catch(err => res.send({ fn: 'deleteNotes', status: 'failure', data: err }).end());
+    UsersController.prototype.deleteNotes = function (req, res) {
+        var id = MongoDB_1.Database.stringToId(req.params.id);
+        var note_id = MongoDB_1.Database.stringToId(req.params.noteid);
+        UsersController.db.getOneRecord(UsersController.usersTable, { _id: id })
+            .then(function (results) {
+            if (results.notes) {
+                results.notes = results.notes.filter(function (item) { return !item.id.equals(note_id); });
+                UsersController.db.updateRecord(UsersController.usersTable, { _id: id }, { $set: { notes: results.notes } })
+                    .then(function (results) { return results ? (res.send({ fn: 'deleteNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end(); })
+                    .catch(function (err) { return res.send({ fn: 'deleteNotes', status: 'failure', data: err }).end(); });
             }
         })
-        .catch((reason) => res.status(500).send(reason).end());
-    }*/
+            .catch(function (reason) { return res.status(500).send(reason).end(); });
+    };
     UsersController.prototype.addComments = function (req, res) {
         var id = MongoDB_1.Database.stringToId(req.params.id);
         var note_id = MongoDB_1.Database.stringToId(req.params.noteid);

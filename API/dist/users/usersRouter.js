@@ -27,6 +27,7 @@ var UsersRouter = /** @class */ (function (_super) {
         this.expressRouter.get('/:username', UsersRouter.useController.getUser);
         this.expressRouter.get('/:username/notes/:noteid', UsersRouter.useController.getNote);
         this.expressRouter.get('/:classId/:professor', UsersRouter.useController.getNotes);
+        this.expressRouter.get('/:username/notes', UsersRouter.useController.getUserNotes);
         this.expressRouter.post('/', [securityMiddleware_1.SecurityMiddleware.RequireAuth], UsersRouter.useController.addUser);
         this.expressRouter.post('/:username/notes', [securityMiddleware_1.SecurityMiddleware.RequireAuth], UsersRouter.useController.addNote);
         this.expressRouter.post('/:username/notes/:noteid', [securityMiddleware_1.SecurityMiddleware.RequireAuth], UsersRouter.useController.addComments);

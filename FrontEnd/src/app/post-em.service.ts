@@ -86,7 +86,7 @@ export class PostEmService {
 
   // get
   getNotesByUser(username: string) {
-    return this.http.get<any>(this.path + 'users/' + username + '/notes');
+    return this.http.get<any>(this.path + 'users/' + username);
   }
 
   postNote(note: string, classID: string, profName: string) {

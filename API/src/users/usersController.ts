@@ -25,7 +25,16 @@ export class UsersController {
         //const id = Database.stringToId(req.params.id);
         //const notes = req.params.notes;
         UsersController.db.getOneRecord(UsersController.usersTable, { username: username})
-            .then((results) => res.send({ fn: 'getUser', status: 'success', data: results._id}).end())
+            .then((results) => res.send({ fn: 'getUser', status: 'success', data: results.notes}).end())
+            .catch((reason) => res.status(500).send(reason).end());
+    }
+
+    getUserNotes(req: express.Request, res: express.Response) {
+        const username = req.params.username;
+        //const id = Database.stringToId(req.params.id);
+        //const notes = req.params.notes;
+        UsersController.db.getOneRecord(UsersController.usersTable, { username: username})
+            .then((results) => res.send({ fn: 'getUser', status: 'success', data: results}).end())
             .catch((reason) => res.status(500).send(reason).end());
     }
 
