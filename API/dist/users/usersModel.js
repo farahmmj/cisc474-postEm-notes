@@ -8,6 +8,8 @@ var UsersModel = /** @class */ (function () {
         this.notes = '';
         this.comments = '';
         this.classId = '';
+        //Implementing the professor search
+        this.professor = '';
     }
     UsersModel.fromObject = function (object) {
         var p = new UsersModel();
@@ -15,10 +17,12 @@ var UsersModel = /** @class */ (function () {
         p.notes = object.notes;
         p.comments = object.comments;
         p.classId = object.classId;
+        p.professor = object.professor;
         return p;
     };
     UsersModel.prototype.toObject = function () {
-        return { username: this.username, notes: this.notes, comments: this.comments, classId: this.classId };
+        return { username: this.username, notes: this.notes, comments: this.comments, classId: this.classId,
+            professor: this.professor };
     };
     return UsersModel;
 }());

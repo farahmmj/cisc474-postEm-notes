@@ -29,7 +29,7 @@ var MainRouter = /** @class */ (function (_super) {
     MainRouter.prototype.setupRoutes = function () {
         this.addRouter('/security', new securityrouter_1.SecurityRouter());
         this.addRouter('/projects', new projectsRouter_1.ProjectsRouter());
-        //Adding my stuff here
+        //Adding stuff here
         this.addRouter('/users', new usersRouter_1.UsersRouter());
         this.addRouter('/classes', new classesRouter_1.ClassesRouter());
     };

@@ -47,12 +47,37 @@ export class PostEmService {
   }
 
   // get 
-  getClassesByProfessor(professor: string) {
+  getClassesByProf(profName: string): Observable<any> {
     // name, professor, notes[]
+    return this.http.get<any>(this.path + 'classes/professors/' + profName);
   }
 
   // get
-  getClassesByName(className: string) {
+  getClassesByID(classID: string): Observable<any> {
+    return this.http.get<any>(this.path + 'classes/courses/' + classID);
+  }
+
+  // get
+  // when you click on a class entry (e.g. CISC474, G SILBER)
+  getNotesByCard(classID: string, profName: string) {
+    //return this.http.get<any>(this.path + )
+  }
+
+  //get
+  getNote() { //?
+
+  }
+
+  // get
+  getNotesByUser(username: string) {
+    return this.http.get<any>(this.path + 'users/' + username + '/notes');
+  }
+
+  postNote(note: string, classID: string, profName: string) {
+
+  }
+
+  postComment(comment: string) {
 
   }
 

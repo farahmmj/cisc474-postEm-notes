@@ -29,11 +29,15 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
+    if (!this.loginForm.valid) {
+      return;
+    }
+
     this.loading = true;
     this.svc.login(this.email.value, this.password.value).subscribe((data:any) => {
       this.loading = false;
       this.svc.token = data.token;
-      this.svc.CurrentUser.next(data.user.email);
+      this.svc.CurrentUser.next(data.email);
       this.router.navigate(['home']);
     }, error => {
       alert(error.message);
