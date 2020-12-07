@@ -12,6 +12,7 @@ export class PostEmService {
   private _token:string='';
   CurrentUser: ReplaySubject<string>=new ReplaySubject<string>();
   CurrentNote: ReplaySubject<string>=new ReplaySubject<string>();
+  CurrentClasses: ReplaySubject<any>=new ReplaySubject<any>();
 
   private username = "";
   private note_id = "";
@@ -58,14 +59,18 @@ export class PostEmService {
   }
 
   // get 
-  getClassesByProf(profName: string): Observable<any> {
+  getClassesByProf(profName: string): void{
     // name, professor, notes[]
-    return this.http.get<any>(this.path + 'classes/professors/' + profName);
+    this.http.get<any>(this.path + 'classes/professors/' + profName).subscribe((data:any) => {
+      this.CurrentClasses.next(data);
+    });
   }
 
   // get
-  getClassesByID(classID: string): Observable<any> {
-    return this.http.get<any>(this.path + 'classes/courses/' + classID);
+  getClassesByID(classID: string): void{
+    this.http.get<any>(this.path + 'classes/courses/' + classID).subscribe((data:any) => {
+      this.CurrentClasses.next(data);
+    });
   }
 
   // get
