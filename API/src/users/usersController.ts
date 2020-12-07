@@ -94,8 +94,8 @@ export class UsersController {
          const id = Database.stringToId(req.params.id);
          const username = req.params.username;
          //const notes_id = req.params.notes_id;
-         UsersController.db.getOneRecord(UsersController.usersTable, {username: username})
-             .then((results) => res.send({ fn: 'getUser', status: 'success', data: results.notes[0] }).end())
+         UsersController.db.getRecords(UsersController.usersTable)
+             .then((results) => res.send({ fn: 'getUser', status: 'success', data: results }).end())
              .catch((reason) => res.status(500).send(reason).end());
  
      }
