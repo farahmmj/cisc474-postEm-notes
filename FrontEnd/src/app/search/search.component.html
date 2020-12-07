@@ -18,7 +18,7 @@
             <img id="note" src="assets/img/doodles/note2.png" alt="">
             <p>Professor Name: {{note.professor}}</p>
             <!--<p>Date Posted:</p>-->
-            <a routerLink="/view-note" class="button">View Note</a>
+            <a (click)="searchNote(note)" class="button">View Note</a>
           </div>
         </div>
 

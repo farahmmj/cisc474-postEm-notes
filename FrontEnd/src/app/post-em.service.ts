@@ -15,6 +15,7 @@ export class PostEmService {
   CurrentClasses: ReplaySubject<any>=new ReplaySubject<any>();
   CurrentNotes: ReplaySubject<any>=new ReplaySubject<any>();
 
+
   private username = "";
   private note_id = "";
 
@@ -23,9 +24,6 @@ export class PostEmService {
     this.CurrentUser.next(undefined);
     this.CurrentUser.subscribe((data: string) => {
       this.username = data;
-    });
-    this.CurrentNote.subscribe((data: string) => {
-      this.note_id = data;
     });
    }
 
