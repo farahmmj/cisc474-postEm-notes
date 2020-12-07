@@ -11,9 +11,20 @@ export class PostEmService {
   private path = 'http://localhost:3000/api/';
   private _token:string='';
   CurrentUser: ReplaySubject<string>=new ReplaySubject<string>();
+  CurrentNote: ReplaySubject<string>=new ReplaySubject<string>();
+
+  private username = "";
+  private note_id = "";
 
   constructor(private http:HttpClient) {
     this.CurrentUser.next(undefined);
+    this.CurrentUser.subscribe((data: string) => {
+      this.username = data;
+    })
+    this.CurrentNote.subscribe((data: string) => {
+      this.note_id = data;
+    })
+
    }
 
   get token():string {
@@ -64,8 +75,8 @@ export class PostEmService {
   }
 
   //get
-  getNote() { //?
-
+  getNote(username: string, noteID: string) {
+    return this.http.get<any>(this.path + 'users/' + username + '/notes/' + noteID);
   }
 
   // get
@@ -74,11 +85,11 @@ export class PostEmService {
   }
 
   postNote(note: string, classID: string, profName: string) {
-
+    return this.http.post<any>(this.path + 'users/' + this.username + '/notes', {note: note, classId: classID, professor: profName})
   }
 
   postComment(comment: string) {
-
+    return this.http.post<any>(this.path + 'users/' + this.username + '/notes/' + this.note_id, {comments: comment});
   }
 
 

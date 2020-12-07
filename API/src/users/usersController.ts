@@ -4,9 +4,14 @@ import {ClassesController} from '../classes/classesController'
 import { Database } from '../common/MongoDB';
 import { Config } from '../config';
 
+
+
+
 export class UsersController {
     static db: Database = new Database(Config.url, "security");
     static usersTable = 'users';
+
+
 
     static classController: ClassesController=new ClassesController();
 
@@ -32,21 +37,33 @@ export class UsersController {
     }
 
    addNote(req: express.Request, res: express.Response){
+       
     const id = Database.stringToId(req.params.id)
+    const username = req.params.username;
     const notes = req.body.notes;
     const professor = req.body.professor;
     const classId = req.body.classId;
-    UsersController.db.getOneRecord(UsersController.usersTable, { _id:id})
+    let note_id
+    UsersController.db.getOneRecord(UsersController.usersTable, { username:username})
             .then((results) => {
+                /*if (!results.notes){
+                    results.notes
+                }
+                
+                console.log(notes);
+                note_id = JSON.stringify(Database.newId())
+                results.notes[note_id] = {classId:classId, professor:professor, note: notes};*/
+
                 if (!results.notes){
                     results.notes=[];
                 }
                 
                 results.notes.push({id: Database.newId(),note: notes, classId:classId, professor:professor});
+
                 
             
                 UsersController.classController.addClass(req,res);
-                UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes:results.notes}})
+                UsersController.db.updateRecord(UsersController.usersTable, { username:username }, { $set: {notes:results.notes}})
                 .then((results) => results ? (res.send({ fn: 'updateNotes', status: 'success' })) : (res.send({ fn: 'addNotes', status: 'failure', data: 'Not found' })).end())
                 .catch(err => res.send({ fn: 'addNotes', status: 'failure', data: err }).end());
             })
@@ -57,15 +74,31 @@ export class UsersController {
 
 
     getNote(req: express.Request, res: express.Response) {
-       // const username = req.params.username;
-        const id = Database.stringToId(req.params.id);
         const username = req.params.username;
-        //const notes_id = req.params.notes_id;
+        const id = Database.stringToId(req.params.noteid);
+        console.log(id)
         UsersController.db.getOneRecord(UsersController.usersTable, {username: username})
-            .then((results) => res.send({ fn: 'getUser', status: 'success', data: results }).end())
+            .then((results) => {
+                for(let i=0; i<results.notes.length; i++) {
+                    console.log(results.notes[i].id);
+                    console.log(id);
+                    if(JSON.stringify(results.notes[i].id) === JSON.stringify(id)) { res.send({ fn: 'getUser', status: 'success', data: results.notes[i]}).end()} 
+                }
+            })
             .catch((reason) => res.status(500).send(reason).end());
 
     }
+
+    getNotes(req: express.Request, res: express.Response) {
+        // const username = req.params.username;
+         const id = Database.stringToId(req.params.id);
+         const username = req.params.username;
+         //const notes_id = req.params.notes_id;
+         UsersController.db.getOneRecord(UsersController.usersTable, {username: username})
+             .then((results) => res.send({ fn: 'getUser', status: 'success', data: results.notes[0] }).end())
+             .catch((reason) => res.status(500).send(reason).end());
+ 
+     }
 
     updateUser(req: express.Request, res: express.Response) {
         const id = Database.stringToId(req.params.id);
@@ -119,9 +152,10 @@ export class UsersController {
     addComments(req: express.Request, res: express.Response){
         const id = Database.stringToId(req.params.id);
         const note_id = Database.stringToId(req.params.noteid);
+        const username = req.params.username;
         const comments = req.body.comments;
 
-        UsersController.db.getOneRecord(UsersController.usersTable, { _id:id})
+        UsersController.db.getOneRecord(UsersController.usersTable, { username:username})
         .then((results) => {
             let notes=results.notes.filter((item:any)=>item.id.equals(note_id));
             if (notes.length==0){
@@ -133,7 +167,7 @@ export class UsersController {
             }
             notes[0].comments.push(comments);
             
-            UsersController.db.updateRecord(UsersController.usersTable, { _id:id }, { $set: {notes: results.notes }})
+            UsersController.db.updateRecord(UsersController.usersTable, { username:username }, { $set: {notes: results.notes }})
             .then((results) => results ? (res.send({ fn: 'addComments', status: 'success' })) : (res.send({ fn: 'addComments', status: 'failure', data: 'Not found' })).end())
             .catch(err => res.send({ fn: 'addComments', status: 'failure', data: err }).end());
         })
@@ -143,8 +177,8 @@ export class UsersController {
 
 
     //Might be implemented depending on what the outcome of getting notes is...
-    getComments(req: express.Request, res: express.Response){
+    /*getComments(req: express.Request, res: express.Response){
         
-    }
+    }*/
 
 }
