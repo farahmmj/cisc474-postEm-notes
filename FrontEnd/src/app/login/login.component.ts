@@ -18,7 +18,13 @@ export class LoginComponent implements OnInit {
 
   constructor(public svc:PostEmService, public router:Router) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+    /*this.svc.CurrentUser.subscribe(user => {
+      if (user != undefined) {
+        this.router.navigate(['home']);
+      }
+    });*/
+  }
 
   get email() {
     return this.loginForm.get('email');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { inject } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { PostEmService } from '../post-em.service';
 
@@ -9,10 +10,20 @@ import { PostEmService } from '../post-em.service';
 })
 export class SearchComponent implements OnInit {
 
+  classes = [
+    {name: "CISC 108", professor: "Greg Silber"},
+    {name: "CISC 475", professor: "Greg Silber"},
+  ];
+
+
   constructor(public svc:PostEmService, public router:Router) { }
 
   // Redirects the user to welcome page if logged out.
   ngOnInit(): void {
     
+  }
+
+  viewClass(name: string) {
+
   }
 }

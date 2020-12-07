@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { PostEmService } from '../post-em.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -7,10 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class MenuComponent implements OnInit {
 
+  loggedIn = false;
+
+
   @Input() activeClass = 'active';
-  constructor() { }
+  constructor(public svc:PostEmService, public router:Router) {}
 
   ngOnInit(): void {
+    this.svc.CurrentUser.subscribe((user) => {
+      this.loggedIn = user != undefined;
+    });
   }
 
 }

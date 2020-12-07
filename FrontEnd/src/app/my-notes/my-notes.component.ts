@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PostEmService } from '../post-em.service';
 
 @Component({
   selector: 'app-my-notes',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyNotesComponent implements OnInit {
 
-  constructor() { }
+  classes = [
+    {name: "CISC 108", professor: "Greg Silber"},
+    {name: "CISC 475", professor: "Greg Silber"},
+  ]
+
+  @Input() data: any;
+  constructor(public svc:PostEmService, public router:Router) { }
 
   ngOnInit(): void {
+    /*this.svc.CurrentUser.subscribe(user => {
+      if (user == undefined) {
+        this.router.navigate(['welcome']);
+      }
+    });*/
   }
-
 }

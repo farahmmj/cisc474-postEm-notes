@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
 
   // Redirects the user to welcome page if logged out.
   ngOnInit(): void {
+    /*this.svc.CurrentUser.subscribe(user => {
+      if (user == undefined) {
+        this.router.navigate(['welcome']);
+      }
+    });*/
   }
-
 }

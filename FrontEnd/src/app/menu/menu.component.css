@@ -22,13 +22,11 @@
     display: inline-block;
     font-size: 16px;
     font-family: Optima, sans-serif;
-    float: right;
       }
 .button2{
     color: whitesmoke;
     font-size: 20px;
     font-family: Optima, sans-serif;
-    display: inline-block;
 
 }
 
@@ -58,3 +56,12 @@ display:inline-block;
     transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
     box-shadow 0.1s ease-in-out;
 }
+
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    align-content: center;
+    align-items: stretch;
+    justify-content: center;
+  }
