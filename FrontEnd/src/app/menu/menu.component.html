@@ -3,16 +3,14 @@
     <a [routerLinkActive]='activeClass' class="nav-link" routerLink='welcome'>Post'em Notes</a>
     <div id="div">
         <div id="nav">
-            <div class="flexboc">
-                <input id="input" type="search" placeholder="Search for something here" formControlName="search"/>
-                    
+            <form [formGroup]="searchForm">
+            <div>
+                <input (keyup.enter)="submitSearch()" id="input" type="search" placeholder="Search for something here" formControlName="search"/>
                 
                 <div class="left flexbox">
                     <a routerLink="/home" class="button2">Home</a>
                     <a routerLink="/my-notes" class="button2">My Notes</a>
                 </div>
-
-                
 
                 <div class="right flexbox">
                     <a routerLink="/signup" class="button">Sign up now!</a>
@@ -23,13 +21,14 @@
             
             <div class="flexbox">
                 <input routerLink="/search" id="search-icon" type="image" src="assets/img/doodles/search.png" />
-                <input type="radio" id="class" name="criteria" value="class" formControlName="class">
+                <input type="radio" id="class" name="criteria" value="class" formControlName="criteria" checked>
                 <label class="option" for="class">Class</label><br>
-                <input type="radio" id="professor" name="criteria" value="professor" formControlName="prof">
+                <input type="radio" id="professor" name="criteria" value="professor" formControlName="criteria">
                 <label class="option" for="professor">Professor</label><br>
-                <input type="radio" id="student" name="criteria" value="student" formControlName="notetaker">
+                <input type="radio" id="student" name="criteria" value="student" formControlName="criteria">
                 <label class="option" for="student">Notetaker</label>
             </div>
+            </form>
         </div>
        
     </div>
