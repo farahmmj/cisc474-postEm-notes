@@ -92,15 +92,22 @@ export class UsersController {
     }
 
     getNotes(req: express.Request, res: express.Response) {
-        // const username = req.params.username;
          const id = Database.stringToId(req.params.id);
          const username = req.params.username;
-         //const notes_id = req.params.notes_id;
+         const classId = req.params.classId;
+         const professor = req.params.professor;
          UsersController.db.getRecords(UsersController.usersTable, {})
              .then((results) => {
-                  
-                 
-                 res.send({ fn: 'getUser', status: 'success', data: results }).end()
+                let notes_list =[];
+                 for(let i =0; i<results.length;i++) {
+                     for(let j=0; j<results[i].notes.length;j++) {
+                        let current = results[i].notes[j]
+                         if(current.classId===classId && current.professor===professor) {
+                             notes_list.push({id: current.id, note: current.notes, classId:current.classId, professor:current.professor, comments: current.comments})
+                         }
+                     }
+                 }
+                 res.send({ fn: 'getUser', status: 'success', data: notes_list }).end()
                 })
              .catch((reason) => res.status(500).send(reason).end());
  

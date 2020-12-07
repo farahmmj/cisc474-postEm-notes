@@ -24,7 +24,7 @@ var SecurityController = /** @class */ (function () {
             if (!usr.validatePassword(req.body.password))
                 return res.sendStatus(401).end();
             var token = jsonwebtoken_1.default.sign(usr.toObject(), config_1.Config.secret, { expiresIn: config_1.Config.tokenLife });
-            res.send({ fn: 'login', status: 'success', data: { token: token, user: { username: req.body.username } } }).end();
+            res.send({ fn: 'login', status: 'success', data: { token: token, user: usr.username } }).end();
         }).catch(function (err) { return res.sendStatus(500).end(); });
     };
     //register - POST

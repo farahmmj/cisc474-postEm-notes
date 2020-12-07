@@ -69,12 +69,23 @@ var UsersController = /** @class */ (function () {
             .catch(function (reason) { return res.status(500).send(reason).end(); });
     };
     UsersController.prototype.getNotes = function (req, res) {
-        // const username = req.params.username;
         var id = MongoDB_1.Database.stringToId(req.params.id);
         var username = req.params.username;
-        //const notes_id = req.params.notes_id;
+        var classId = req.params.classId;
+        var professor = req.params.professor;
         UsersController.db.getRecords(UsersController.usersTable, {})
-            .then(function (results) { console.log(results); res.send({ fn: 'getUser', status: 'success', data: results }).end(); })
+            .then(function (results) {
+            var notes_list = [];
+            for (var i = 0; i < results.length; i++) {
+                for (var j = 0; j < results[i].notes.length; j++) {
+                    var current = results[i].notes[j];
+                    if (current.classId === classId && current.professor === professor) {
+                        notes_list.push({ id: current.id, note: current.notes, classId: current.classId, professor: current.professor, comments: current.comments });
+                    }
+                }
+            }
+            res.send({ fn: 'getUser', status: 'success', data: notes_list }).end();
+        })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
     };
     UsersController.prototype.updateUser = function (req, res) {
