@@ -1,16 +1,26 @@
-<br>
 <div class="container">
-    <h1 class="center">Upload a Note</h1>
+<h1 class="center">Upload a Note</h1>
     <div id="div">
-    <input id="input" type="email" placeholder="Class name ex. CISC108" formControlName="cn" />
+        <form [formGroup]="uploadForm">
+
+            <div *ngIf="class.invalid && (class.dirty || class.touched)" class="alert alert-danger">
+                <div *ngIf="class.errors.required">Class is required.</div>
+            </div>
+            <input id="input" type="text" placeholder="Class name ex. CISC108" formControlName="class" />
             <div class="divider"></div>
-            <input id="input" type="text" placeholder="Professor name ex. John Smith" formControlName="pn" />
+
+            <div *ngIf="professor.invalid && (professor.dirty || professor.touched)" class="alert alert-danger">
+                <div *ngIf="professor.errors.required">Professor is required.</div>
+            </div>
+            <input id="input" type="text" placeholder="Professor name ex. John Smith" formControlName="professor" />
             <div class="divider"></div>
-            <input id="input" type="password" placeholder="Semester/Year ex. Spring 2020" formControlName="password" />
+
+            <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
+                <div *ngIf="file.errors.required">File is required.</div>
+            </div>
+            <input type="file" id="button" formControlName="file" />
             <div class="divider"></div>
-     <input type="file" id="button" name="filename">
-     <div class="divider"></div>
-        <input id="button" type="submit" value="Submit">
-</div>
-    
+
+            <button (click)="upload()" [disabled]="!uploadForm.valid || loading" id="button">Submit</button>
+        </form>
 </div>
