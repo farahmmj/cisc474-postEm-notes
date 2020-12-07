@@ -31,11 +31,13 @@
     display: inline-block;
     font-size: 16px;
     font-family: Optima, sans-serif;
+    float: right;
       }
 .button2{
     color: #c9af8d;
     font-size: 20px;
     font-family: Optima, sans-serif;
+    display: inline-block;
 
 }
 
@@ -64,7 +66,6 @@ display:inline-block;
     color: #a7b4c1;
     transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
     box-shadow 0.1s ease-in-out;
-<<<<<<< HEAD
     
 }
 
@@ -77,15 +78,3 @@ display:inline-block;
 .option{
     font-family:URW Chancery L, cursive;
 }
-=======
-}
-
-.flexbox {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    align-content: center;
-    align-items: stretch;
-    justify-content: center;
-  }
->>>>>>> 128ad1e15387ed8886eddaa32eb0108857282f44
