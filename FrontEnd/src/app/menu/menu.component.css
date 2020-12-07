@@ -7,7 +7,7 @@
     color: whitesmoke;
     font-family:URW Chancery L, cursive;
     font-size: 25px;
-    margin-left: 43.5%;
+    text-align: center;
 
 }
 
@@ -27,15 +27,17 @@
     border-radius: 3px;
     border-width: 3px;
     padding: 5px 20px;
-    text-align: center;
-    display: inline-block;
     font-size: 16px;
     font-family: Optima, sans-serif;
-      }
+    margin: 10px;
+
+}
 .button2{
     color: #c9af8d;
     font-size: 20px;
     font-family: Optima, sans-serif;
+    display: inline-block;
+    padding: 10px;
 
 }
 
@@ -64,7 +66,6 @@ display:inline-block;
     color: #a7b4c1;
     transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
     box-shadow 0.1s ease-in-out;
-<<<<<<< HEAD
     
 }
 
@@ -77,15 +78,18 @@ display:inline-block;
 .option{
     font-family:URW Chancery L, cursive;
 }
-=======
-}
 
 .flexbox {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    align-content: center;
-    align-items: stretch;
+    display:flex;
+    flex-direction: row;
     justify-content: center;
-  }
->>>>>>> 128ad1e15387ed8886eddaa32eb0108857282f44
+    align-items: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
