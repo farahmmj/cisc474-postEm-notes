@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, ReplaySubject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -90,11 +90,19 @@ export class PostEmService {
   }
 
   postNote(note: string, classID: string, profName: string) {
-    return this.http.post<any>(this.path + 'users/' + this.username + '/notes', {note: note, classId: classID, professor: profName})
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.token });
+    let options = { headers: headers };
+    return this.http.post<any>(this.path + 'users/' + this.username + '/notes', {note: note, classId: classID, professor: profName}, options)
   }
 
   postComment(comment: string) {
-    return this.http.post<any>(this.path + 'users/' + this.username + '/notes/' + this.note_id, {comments: comment});
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.token });
+    let options = { headers: headers };
+    return this.http.post<any>(this.path + 'users/' + this.username + '/notes/' + this.note_id, {comments: comment}, options);
   }
 
 

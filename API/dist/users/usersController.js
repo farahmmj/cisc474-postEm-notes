@@ -29,6 +29,8 @@ var UsersController = /** @class */ (function () {
         var notes = req.body.notes;
         var professor = req.body.professor;
         var classId = req.body.classId;
+        var data = req.body;
+        console.log(data.authUser);
         var note_id;
         UsersController.db.getOneRecord(UsersController.usersTable, { username: username })
             .then(function (results) {
@@ -71,8 +73,8 @@ var UsersController = /** @class */ (function () {
         var id = MongoDB_1.Database.stringToId(req.params.id);
         var username = req.params.username;
         //const notes_id = req.params.notes_id;
-        UsersController.db.getRecords(UsersController.usersTable)
-            .then(function (results) { return res.send({ fn: 'getUser', status: 'success', data: results }).end(); })
+        UsersController.db.getRecords(UsersController.usersTable, {})
+            .then(function (results) { console.log(results); res.send({ fn: 'getUser', status: 'success', data: results }).end(); })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
     };
     UsersController.prototype.updateUser = function (req, res) {

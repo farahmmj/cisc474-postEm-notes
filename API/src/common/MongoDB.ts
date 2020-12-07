@@ -77,6 +77,23 @@ export class Database {
         });
     }
 
+    //getRecords
+    // collection: the name of the collection to get from.
+    // query: a mongo query object
+    // returns a promise to an array of records
+    getAllRecords(collection: string): Promise<any> {
+        var dbname = this.dbName;
+        var url=this.url;
+        return new Promise(function (resolve, reject) {            
+            MongoClient.connect(url, function (err, db) {
+                if (err) reject(err);
+                const dbo = db.db(dbname);
+                dbo.collection(collection);
+                    db.close();
+            });
+        });
+    }
+
     //getOneRecords
     // collection: the name of the collection to get from.
     // query: a mongo query object
