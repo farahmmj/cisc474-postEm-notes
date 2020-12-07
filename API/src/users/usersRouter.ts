@@ -12,7 +12,7 @@ export class UsersRouter extends AppRouter{
        
         this.expressRouter.get('/:username',UsersRouter.useController.getUser);
         this.expressRouter.get('/:username/notes/:noteid', UsersRouter.useController.getNote);
-        this.expressRouter.get('/', UsersRouter.useController.getNotes);
+        this.expressRouter.get('/:classId/:professor', UsersRouter.useController.getNotes);
         this.expressRouter.post('/',[SecurityMiddleware.RequireAuth],UsersRouter.useController.addUser);
         this.expressRouter.post('/:username/notes',[SecurityMiddleware.RequireAuth],UsersRouter.useController.addNote);
         this.expressRouter.post('/:username/notes/:noteid',[SecurityMiddleware.RequireAuth],UsersRouter.useController.addComments);
