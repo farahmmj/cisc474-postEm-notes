@@ -15,7 +15,7 @@
                 <div class="right flexbox">
                     <a *ngIf="!loggedIn" routerLink="/signup" class="button">Sign up now!</a>
                     <a *ngIf="!loggedIn" routerLink="/login" class="button">Login</a>
-                    <a *ngIf="loggedIn" routerLink="/login" class="button">Logout</a>
+                    <a *ngIf="loggedIn" class="button" (click)="logout()">Logout</a>
                 </div>
 
             </div> 
