@@ -110,7 +110,7 @@ export class UsersController {
              .then((results) => {
                  var notes_list=[]
                  for(let i =0; i<results.length;i++) {
-                     for(let j=0; j<results[i].notes.length;j++) {
+                     for(let j=0; results[i].notes && j<results[i].notes.length;j++) {
 
                          var current = results[i].notes[j]
                          //console.log(JSON.stringify(current.classId)===JSON.stringify(classId) && JSON.stringify(current.professor)===JSON.stringify(professor));

@@ -85,7 +85,7 @@ var UsersController = /** @class */ (function () {
             .then(function (results) {
             var notes_list = [];
             for (var i = 0; i < results.length; i++) {
-                for (var j = 0; j < results[i].notes.length; j++) {
+                for (var j = 0; results[i].notes && j < results[i].notes.length; j++) {
                     var current = results[i].notes[j];
                     //console.log(JSON.stringify(current.classId)===JSON.stringify(classId) && JSON.stringify(current.professor)===JSON.stringify(professor));
                     if (JSON.stringify(current.classId) === JSON.stringify(classId) && JSON.stringify(current.professor) === JSON.stringify(professor)) {
