@@ -10,10 +10,7 @@ import { PostEmService } from '../post-em.service';
 })
 export class SearchComponent implements OnInit {
 
-  classes = [
-    {name: "CISC 108", professor: "Greg Silber"},
-    {name: "CISC 475", professor: "Greg Silber"},
-  ];
+  classes: any;
 
 
   constructor(public svc:PostEmService, public router:Router) { }
@@ -21,6 +18,10 @@ export class SearchComponent implements OnInit {
   // Redirects the user to welcome page if logged out.
   ngOnInit(): void {
     
+    this.svc.CurrentClasses.subscribe((data: any) => {
+      this.classes = data;
+    });
+    this.svc.getClassesByProf("Bart");
   }
 
   viewClass(name: string) {

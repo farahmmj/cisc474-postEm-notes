@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostEmService } from '../post-em.service';
 
@@ -10,15 +10,46 @@ import { PostEmService } from '../post-em.service';
 })
 export class UploadComponent implements OnInit {
 
+  loading = false;
   uploadForm = new FormGroup({
-    content: new FormControl(''),
+    class: new FormControl('', [Validators.required]),
+    professor: new FormControl('', [Validators.required]),
+    content: new FormControl('', [Validators.required]),
   });
 
   constructor(public svc:PostEmService, public router:Router) { }
 
+  get class() {
+    return this.uploadForm.get('class');
+  }
+
+  get professor() {
+    return this.uploadForm.get('professor');
+  }
+
+  get content() {
+    return this.uploadForm.get('content');
+  }
+
   // Redirects the user to welcome page if logged out.
   ngOnInit(): void {
 
+  }
+
+  upload() {
+    if (!this.uploadForm.valid) {
+      return;
+    }
+
+    this.loading = true;
+    this.svc.postNote(this.content.value, this.class.value, this.professor.value).subscribe((data:any) => {
+      this.loading = false;
+      this.router.navigate(['my-notes']);
+      alert("You successfully posted your note.");
+    }, err => {
+      this.loading = false;
+      alert(err.message);
+    });
   }
 
 }
