@@ -10,6 +10,7 @@ import { PostEmService } from '../post-em.service';
 })
 export class UploadComponent implements OnInit {
 
+  test: any;
   loading = false;
   uploadForm = new FormGroup({
     class: new FormControl('', [Validators.required]),
@@ -42,6 +43,7 @@ export class UploadComponent implements OnInit {
     }
 
     this.loading = true;
+    this.test = [this.svc.token, this.content.value, this.class.value, this.professor.value];
     this.svc.postNote(this.content.value, this.class.value, this.professor.value).subscribe((data:any) => {
       this.loading = false;
       this.router.navigate(['my-notes']);
