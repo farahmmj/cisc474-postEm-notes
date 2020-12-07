@@ -20,7 +20,8 @@ export class SignupComponent implements OnInit {
 
   constructor(public svc:PostEmService, public router:Router) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   get email() {
     return this.signupForm.get('email');

@@ -8,13 +8,14 @@
                 <input (keyup.enter)="submitSearch()" id="input" type="search" placeholder="Search for something here" formControlName="search"/>
                 
                 <div class="left flexbox">
-                    <a routerLink="/home" class="button2">Home</a>
-                    <a routerLink="/my-notes" class="button2">My Notes</a>
+                    <a *ngIf="loggedIn" routerLink="/home" class="button2">Home</a>
+                    <a *ngIf="loggedIn" routerLink="/my-notes" class="button2">My Notes</a>
                 </div>
 
                 <div class="right flexbox">
-                    <a routerLink="/signup" class="button">Sign up now!</a>
-                    <a routerLink="/login" class="button">Login</a>
+                    <a *ngIf="!loggedIn" routerLink="/signup" class="button">Sign up now!</a>
+                    <a *ngIf="!loggedIn" routerLink="/login" class="button">Login</a>
+                    <a *ngIf="loggedIn" routerLink="/login" class="button">Logout</a>
                 </div>
 
             </div> 

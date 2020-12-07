@@ -20,11 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(public svc:PostEmService, public router:Router) { }
 
   ngOnInit(): void {
-    /*this.svc.CurrentUser.subscribe(user => {
-      if (user != undefined) {
-        this.router.navigate(['home']);
-      }
-    });*/
+
   }
 
   get email() {
@@ -44,9 +40,8 @@ export class LoginComponent implements OnInit {
     this.svc.login(this.email.value, this.password.value).subscribe((data:any) => {
       this.loading = false;
       this.svc.token = data.data.token;
-      //this.svc.CurrentUser.next();
-      this.username = JSON.stringify(data.data.user);
-      //this.router.navigate(['home']);
+      this.svc.CurrentUser.next(data.data.user);
+      this.router.navigate(['home']);
     }, error => {
       alert(error.message);
       this.loading = false;

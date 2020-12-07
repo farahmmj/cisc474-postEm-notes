@@ -10,6 +10,7 @@ import { PostEmService } from '../post-em.service';
 
 export class MenuComponent implements OnInit {
 
+  loggedIn = false;
   searchForm = new FormGroup({
     search: new FormControl(''),
     criteria: new FormControl(''),
@@ -19,6 +20,9 @@ export class MenuComponent implements OnInit {
   constructor(public svc:PostEmService, public router:Router) { }
 
   ngOnInit(): void {
+    this.svc.CurrentUser.subscribe((user:any) => {
+      this.loggedIn = user != undefined;
+    });
   }
 
   get search() {
@@ -37,6 +41,11 @@ export class MenuComponent implements OnInit {
       this.svc.getClassesByProf(this.search.value);
       this.router.navigate(['search']);
     }
+  }
+
+  logout() {
+    this.svc.logout();
+    this.router.navigate(['welcome']);
   }
 
 }
