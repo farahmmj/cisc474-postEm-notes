@@ -13,6 +13,7 @@ export class PostEmService {
   CurrentUser: ReplaySubject<string>=new ReplaySubject<string>();
   CurrentNote: ReplaySubject<string>=new ReplaySubject<string>();
   CurrentClasses: ReplaySubject<any>=new ReplaySubject<any>();
+  CurrentNotes: ReplaySubject<any>=new ReplaySubject<any>();
 
   private username = "";
   private note_id = "";
@@ -21,11 +22,10 @@ export class PostEmService {
     this.CurrentUser.next(undefined);
     this.CurrentUser.subscribe((data: string) => {
       this.username = data;
-    })
+    });
     this.CurrentNote.subscribe((data: string) => {
       this.note_id = data;
-    })
-
+    });
    }
 
   get token():string {
@@ -86,7 +86,9 @@ export class PostEmService {
 
   // get
   getNotesByUser(username: string) {
-    return this.http.get<any>(this.path + 'users/' + username);
+    this.http.get<any>(this.path + 'users/' + username).subscribe(data => {
+      this.CurrentNotes.next(data.data);
+    });
   }
 
   postNote(note: string, classID: string, profName: string) {

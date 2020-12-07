@@ -11,11 +11,15 @@ import { PostEmService } from '../post-em.service';
 export class SearchComponent implements OnInit {
 
   classes: any;
+  notes: any;
 
 
   constructor(public svc:PostEmService, public router:Router) { }
 
   ngOnInit(): void {
+    this.svc.CurrentNotes.subscribe(data => {
+      this.notes = data;
+    });
     this.svc.CurrentClasses.subscribe((data: any) => {
       this.classes = data;
     });
@@ -23,5 +27,5 @@ export class SearchComponent implements OnInit {
 
   viewClass(name: string) {
 
-  }
+  };
 }

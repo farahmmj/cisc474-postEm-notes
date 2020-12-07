@@ -11,6 +11,18 @@
             <button class="button">View Class</button>
           </div>
         </div>
+
+        <div class="column" *ngFor="let note of notes">
+          <div class="card">
+            <h3>{{note.classId}}</h3>
+            <img id="note" src="assets/img/doodles/note2.png" alt="">
+            <p>Professor Name: {{note.professor}}</p>
+            <!--<p>Date Posted:</p>-->
+            <a routerLink="/view-note" class="button">View Note</a>
+          </div>
+        </div>
+
+        
       </div>
     <br><br>
 </div>
