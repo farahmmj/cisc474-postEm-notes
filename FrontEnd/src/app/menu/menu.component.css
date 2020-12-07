@@ -7,7 +7,7 @@
     color: whitesmoke;
     font-family:URW Chancery L, cursive;
     font-size: 25px;
-    margin-left: 640px;
+    margin-left: 43.5%;
 
 }
 
@@ -24,6 +24,13 @@
     font-family: Optima, sans-serif;
     float: right;
       }
+.button2{
+    color: whitesmoke;
+    font-size: 20px;
+    font-family: Optima, sans-serif;
+    display: inline-block;
+
+}
 
 .divider{
 width:5px;

@@ -10,6 +10,14 @@
     font-size: 35px;
 }
 
+#h4{
+    font-family: Optima, sans-serif;
+    color: #54442e;
+    font-weight: bold;
+    font-size: 25px;
+    
+}
+
 #button{
 
     background-color: #c9af8d;
@@ -27,4 +35,32 @@
     font-weight: 200;
     font-family: Optima, sans-serif;
   
+}
+.divider{
+    width:2px;
+    height:auto;
+    display:inline-block;
+}
+
+#input{
+    display: block;
+    width: 441px;
+    max-width: 100%;
+    height: 30px;
+    border: 3px;
+    border-color: plum;
+    background-color:whitesmoke;
+    border-bottom-left-radius: 41px;
+    border-bottom-right-radius: 41px;
+    border-top-left-radius: 41px;
+    border-top-right-radius: 150px;
+    box-shadow: 0 17px 40px 0 rgba(75, 128, 182, 0.07);
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: #a7b4c1;
+    transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+
 }
