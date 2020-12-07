@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { UploadComponent } from './upload/upload.component';
 import { ViewClassComponent } from './view-class/view-class.component';
+import { ViewNoteComponent } from './view-note/view-note.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'uploadFile', component: UploadFileComponent},
   {path: 'my-notes', component: MyNotesComponent},
   {path: 'view-class', component: ViewClassComponent},
+  {path: 'view-note', component: ViewNoteComponent},
 ];
 
 @NgModule({

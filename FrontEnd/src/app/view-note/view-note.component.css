@@ -1,0 +1,14 @@
+#div{
+    width: 550px;
+      border: 5px dotted #54442e;
+      padding: 50px;
+      margin: 20px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    #h1{
+        font-family: Optima, sans-serif;
+        color: #54442e;
+        font-weight: bold;
+        font-size: 35px;
+    }
