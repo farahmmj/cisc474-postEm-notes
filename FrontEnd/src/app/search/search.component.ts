@@ -26,7 +26,8 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  viewClass(name: string) {
-
-  };
+  searchNote(note: any) {
+    this.svc.CurrentNote.next(note);
+    this.router.navigate(['view-note']);
+  }
 }
