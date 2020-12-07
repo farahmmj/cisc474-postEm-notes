@@ -3,6 +3,7 @@ import { UsersModel } from './usersModel';
 import {ClassesController} from '../classes/classesController'
 import { Database } from '../common/MongoDB';
 import { Config } from '../config';
+import { JsonObjectExpressionStatement } from 'typescript';
 
 
 
@@ -96,17 +97,21 @@ export class UsersController {
          const username = req.params.username;
          const classId = req.params.classId;
          const professor = req.params.professor;
-         UsersController.db.getRecords(UsersController.usersTable, {})
+         UsersController.db.getRecords(UsersController.usersTable)
              .then((results) => {
-                let notes_list =[];
+                 var notes_list=[]
                  for(let i =0; i<results.length;i++) {
                      for(let j=0; j<results[i].notes.length;j++) {
-                        let current = results[i].notes[j]
-                         if(current.classId===classId && current.professor===professor) {
-                             notes_list.push({id: current.id, note: current.notes, classId:current.classId, professor:current.professor, comments: current.comments})
+
+                         var current = results[i].notes[j]
+                         //console.log(JSON.stringify(current.classId)===JSON.stringify(classId) && JSON.stringify(current.professor)===JSON.stringify(professor));
+                         if(JSON.stringify(current.classId)===JSON.stringify(classId) && JSON.stringify(current.professor)===JSON.stringify(professor)) {
+                             notes_list.push(results[i].notes[j])
+                            console.log(current)      
                          }
                      }
                  }
+                 console.log(current)
                  res.send({ fn: 'getUser', status: 'success', data: notes_list }).end()
                 })
              .catch((reason) => res.status(500).send(reason).end());

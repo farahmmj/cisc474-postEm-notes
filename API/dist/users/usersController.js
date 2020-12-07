@@ -73,17 +73,20 @@ var UsersController = /** @class */ (function () {
         var username = req.params.username;
         var classId = req.params.classId;
         var professor = req.params.professor;
-        UsersController.db.getRecords(UsersController.usersTable, {})
+        UsersController.db.getRecords(UsersController.usersTable)
             .then(function (results) {
             var notes_list = [];
             for (var i = 0; i < results.length; i++) {
                 for (var j = 0; j < results[i].notes.length; j++) {
                     var current = results[i].notes[j];
-                    if (current.classId === classId && current.professor === professor) {
-                        notes_list.push({ id: current.id, note: current.notes, classId: current.classId, professor: current.professor, comments: current.comments });
+                    //console.log(JSON.stringify(current.classId)===JSON.stringify(classId) && JSON.stringify(current.professor)===JSON.stringify(professor));
+                    if (JSON.stringify(current.classId) === JSON.stringify(classId) && JSON.stringify(current.professor) === JSON.stringify(professor)) {
+                        notes_list.push(results[i].notes[j]);
+                        console.log(current);
                     }
                 }
             }
+            console.log(current);
             res.send({ fn: 'getUser', status: 'success', data: notes_list }).end();
         })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
