@@ -82,11 +82,11 @@ var UsersController = /** @class */ (function () {
                     //console.log(JSON.stringify(current.classId)===JSON.stringify(classId) && JSON.stringify(current.professor)===JSON.stringify(professor));
                     if (JSON.stringify(current.classId) === JSON.stringify(classId) && JSON.stringify(current.professor) === JSON.stringify(professor)) {
                         notes_list.push(results[i].notes[j]);
-                        console.log(current);
+                        console.log(notes_list);
                     }
                 }
             }
-            console.log(current);
+            console.log(notes_list);
             res.send({ fn: 'getUser', status: 'success', data: notes_list }).end();
         })
             .catch(function (reason) { return res.status(500).send(reason).end(); });
