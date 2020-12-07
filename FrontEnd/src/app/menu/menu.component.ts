@@ -40,6 +40,9 @@ export class MenuComponent implements OnInit {
     } else if (this.criteria.value === "professor") {
       this.svc.getClassesByProf(this.search.value);
       this.router.navigate(['search']);
+    } else if (this.criteria.value === "student") {
+      this.svc.getNotesByUser(this.search.value);
+      this.router.navigate(['search']);
     }
   }
 

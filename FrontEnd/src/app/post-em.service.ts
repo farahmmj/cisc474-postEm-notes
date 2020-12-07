@@ -19,6 +19,7 @@ export class PostEmService {
   private note_id = "";
 
   constructor(private http:HttpClient) {
+    this.CurrentNotes.next(undefined);
     this.CurrentUser.next(undefined);
     this.CurrentUser.subscribe((data: string) => {
       this.username = data;
@@ -86,7 +87,7 @@ export class PostEmService {
 
   // get
   getNotesByUser(username: string) {
-    this.http.get<any>(this.path + 'users/' + username).subscribe(data => {
+    this.http.get<any>(this.path + 'users/' + username).subscribe((data:any) => {
       this.CurrentNotes.next(data.data);
     });
   }

@@ -13,15 +13,16 @@ export class SearchComponent implements OnInit {
   classes: any;
   notes: any;
 
-
   constructor(public svc:PostEmService, public router:Router) { }
 
   ngOnInit(): void {
-    this.svc.CurrentNotes.subscribe(data => {
+    this.svc.CurrentNotes.subscribe((data:any) => {
       this.notes = data;
+      this.classes = undefined;
     });
     this.svc.CurrentClasses.subscribe((data: any) => {
       this.classes = data;
+      this.notes = undefined;
     });
   }
 
