@@ -9,6 +9,7 @@ import { PostEmService } from '../post-em.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  username: string;
 
   loading = false;
   loginForm = new FormGroup({
@@ -42,9 +43,10 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.svc.login(this.email.value, this.password.value).subscribe((data:any) => {
       this.loading = false;
-      this.svc.token = data.token;
-      this.svc.CurrentUser.next(data.username);
-      this.router.navigate(['home']);
+      this.svc.token = data.data.token;
+      //this.svc.CurrentUser.next();
+      this.username = JSON.stringify(data.data.user);
+      //this.router.navigate(['home']);
     }, error => {
       alert(error.message);
       this.loading = false;

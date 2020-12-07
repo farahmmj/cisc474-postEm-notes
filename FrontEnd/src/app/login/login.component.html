@@ -16,6 +16,7 @@
             <br>
             <button [disabled]="!loginForm.valid || loading" (click)="login()">Login</button>
             <br>
+            *{{username}}
         </div>
         
         <div><p>Don't have an account? <a routerLink="/signup">Sign Up</a></p></div>
