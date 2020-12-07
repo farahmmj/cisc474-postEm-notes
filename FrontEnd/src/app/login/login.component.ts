@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.svc.login(this.email.value, this.password.value).subscribe((data:any) => {
       this.loading = false;
       this.svc.token = data.token;
-      this.svc.CurrentUser.next(data.email);
+      this.svc.CurrentUser.next(data.username);
       this.router.navigate(['home']);
     }, error => {
       alert(error.message);
