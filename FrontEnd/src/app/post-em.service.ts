@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable, ReplaySubject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +60,7 @@ export class PostEmService {
   // get
   // when you click on a class entry (e.g. CISC474, G SILBER)
   getNotesByCard(classID: string, profName: string) {
-    return this.http.get<any>(this.path + )
+    //return this.http.get<any>(this.path + )
   }
 
   //get
