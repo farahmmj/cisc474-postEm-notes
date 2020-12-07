@@ -11,9 +11,21 @@ export class PostEmService {
   private path = 'http://localhost:3000/api/';
   private _token:string='';
   CurrentUser: ReplaySubject<string>=new ReplaySubject<string>();
+  CurrentNote: ReplaySubject<string>=new ReplaySubject<string>();
+  CurrentClasses: ReplaySubject<any>=new ReplaySubject<any>();
+
+  private username = "";
+  private note_id = "";
 
   constructor(private http:HttpClient) {
     this.CurrentUser.next(undefined);
+    this.CurrentUser.subscribe((data: string) => {
+      this.username = data;
+    })
+    this.CurrentNote.subscribe((data: string) => {
+      this.note_id = data;
+    })
+
    }
 
   get token():string {
@@ -47,14 +59,18 @@ export class PostEmService {
   }
 
   // get 
-  getClassesByProf(profName: string): Observable<any> {
+  getClassesByProf(profName: string): void{
     // name, professor, notes[]
-    return this.http.get<any>(this.path + 'classes/professors/' + profName);
+    this.http.get<any>(this.path + 'classes/professors/' + profName).subscribe((data:any) => {
+      this.CurrentClasses.next(data);
+    });
   }
 
   // get
-  getClassesByID(classID: string): Observable<any> {
-    return this.http.get<any>(this.path + 'classes/courses/' + classID);
+  getClassesByID(classID: string): void{
+    this.http.get<any>(this.path + 'classes/courses/' + classID).subscribe((data:any) => {
+      this.CurrentClasses.next(data);
+    });
   }
 
   // get
@@ -64,8 +80,8 @@ export class PostEmService {
   }
 
   //get
-  getNote() { //?
-
+  getNote(username: string, noteID: string) {
+    return this.http.get<any>(this.path + 'users/' + username + '/notes/' + noteID);
   }
 
   // get
@@ -74,11 +90,11 @@ export class PostEmService {
   }
 
   postNote(note: string, classID: string, profName: string) {
-
+    return this.http.post<any>(this.path + 'users/' + this.username + '/notes', {note: note, classId: classID, professor: profName})
   }
 
   postComment(comment: string) {
-
+    return this.http.post<any>(this.path + 'users/' + this.username + '/notes/' + this.note_id, {comments: comment});
   }
 
 

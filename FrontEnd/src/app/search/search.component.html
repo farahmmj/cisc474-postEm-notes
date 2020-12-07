@@ -3,40 +3,16 @@
    
     <h1 class="start">Your search results:</h1>
     <div class="row">
-        <div class="column">
+        <div class="column" *ngFor="let class of classes">
           <div class="card">
-            <h3>CISC108</h3>
+            <h3>{{class.name}}</h3>
             <img id="note" src="assets/img/doodles/class-doodle.png" alt="">
-            <p>Professor Name:</p>
+            <p>Professor Name: {{class.professor}}</p>
             <p>Number of Notes:</p>
-            <a routerLink="/view-class" class="button">View Class</a>
+            <button class="button">View Class</button>
           </div>
         </div>
-      
-        <div class="column">
-          <div class="card">
-            <h3>CISC303</h3>
-            <img id="note" src="assets/img/doodles/class-doodle.png" alt="">
-            <p>Professor Name:</p>
-            <p>Number of Notes:</p>
-            <a routerLink="/view-class" class="button">View Class</a>
-
-          </div>
-        </div>
-        
-        <div class="column">
-          <div class="card">
-            <h3>CISC474</h3>
-            <img id="note" src="assets/img/doodles/class-doodle.png" alt="">
-            <p>Professor Name:</p>
-            <p>Number of Notes:</p>
-            <a routerLink="/view-class" class="button">View Class</a>
-          </div>
-        </div>
-    
       </div>
-
-
     <br><br>
 </div>
 

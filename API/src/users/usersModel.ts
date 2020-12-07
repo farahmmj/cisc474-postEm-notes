@@ -1,7 +1,13 @@
+interface Note {
+    classId: string,
+    professor: string,
+    note: string    
+}
+
 export class UsersModel{
     id='';
     username='';
-    notes= '';
+    notes='';
     comments = '';
     classId = '';
     
