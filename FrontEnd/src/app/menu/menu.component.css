@@ -1,5 +1,5 @@
 .navbarDesign{
-    background-color: #c9af8d;
+    background: linear-gradient(to bottom, #c9af8d 0%, #ffffff 97%);
 
 }
 
@@ -9,6 +9,15 @@
     font-size: 25px;
     margin-left: 43.5%;
 
+}
+
+#left{
+    display: inline-flex; 
+}
+#list{
+    display: inline-flex;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .button{
@@ -24,7 +33,7 @@
     font-family: Optima, sans-serif;
       }
 .button2{
-    color: whitesmoke;
+    color: #c9af8d;
     font-size: 20px;
     font-family: Optima, sans-serif;
 
@@ -55,6 +64,20 @@ display:inline-block;
     color: #a7b4c1;
     transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
     box-shadow 0.1s ease-in-out;
+<<<<<<< HEAD
+    
+}
+
+#search-icon{
+    width: 30px;
+    height: 30px;
+    border: 5px dotted #54442e;
+}
+
+.option{
+    font-family:URW Chancery L, cursive;
+}
+=======
 }
 
 .flexbox {
@@ -65,3 +88,4 @@ display:inline-block;
     align-items: stretch;
     justify-content: center;
   }
+>>>>>>> 128ad1e15387ed8886eddaa32eb0108857282f44
