@@ -62,14 +62,14 @@ export class PostEmService {
   getClassesByProf(profName: string): void{
     // name, professor, notes[]
     this.http.get<any>(this.path + 'classes/professors/' + profName).subscribe((data:any) => {
-      this.CurrentClasses.next(data);
+      this.CurrentClasses.next(data.data);
     });
   }
 
   // get
   getClassesByID(classID: string): void{
     this.http.get<any>(this.path + 'classes/courses/' + classID).subscribe((data:any) => {
-      this.CurrentClasses.next(data);
+      this.CurrentClasses.next(data.data);
     });
   }
 

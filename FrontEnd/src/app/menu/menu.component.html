@@ -3,55 +3,35 @@
     <a [routerLinkActive]='activeClass' class="nav-link" routerLink='welcome'>Post'em Notes</a>
     <div id="div">
         <div id="nav">
+            <form [formGroup]="searchForm">
+            <div>
+                <input (keyup.enter)="submitSearch()" id="input" type="search" placeholder="Search for something here" formControlName="search"/>
+                
+                <div class="left flexbox">
+                    <a *ngIf="loggedIn" routerLink="/home" class="button2">Home</a>
+                    <a *ngIf="loggedIn" routerLink="/my-notes" class="button2">My Notes</a>
+                </div>
 
-            <ul>
-                <input id="input" type="search" placeholder="Search for something here" formControlName="search"/>
-                <input routerLink="/search" id="search-icon" type="image" src="assets/img/doodles/search.png" />
-            </ul>
+                <div class="right flexbox">
+                    <a *ngIf="!loggedIn" routerLink="/signup" class="button">Sign up now!</a>
+                    <a *ngIf="!loggedIn" routerLink="/login" class="button">Login</a>
+                    <a *ngIf="loggedIn" routerLink="/login" class="button">Logout</a>
+                </div>
+
+            </div> 
             
-
-            <ul id="list">
-                
-                    <input type="radio" id="class" name="criteria" value="class" formControlName="class">
-                    <label class="option" for="class">Class</label><br>
-                
-                
-                
-                    <input type="radio" id="professor" name="criteria" value="professor" formControlName="prof">
-                    <label class="option" for="professor">Professor</label><br>
-                
-                
-                  
-                    <input type="radio" id="student" name="criteria" value="student" formControlName="notetaker">
-                    <label class="option" for="student">Notetaker</label>
-                
-             
-            </ul>
-                
+            <div class="flexbox">
+                <input routerLink="/search" id="search-icon" type="image" src="assets/img/doodles/search.png" />
+                <input type="radio" id="class" name="criteria" value="class" formControlName="criteria" checked>
+                <label class="option" for="class">Class</label><br>
+                <input type="radio" id="professor" name="criteria" value="professor" formControlName="criteria">
+                <label class="option" for="professor">Professor</label><br>
+                <input type="radio" id="student" name="criteria" value="student" formControlName="criteria">
+                <label class="option" for="student">Notetaker</label>
+            </div>
+            </form>
         </div>
        
-
-   
-        <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item ">
-            <a routerLink="/signup" class="button">Sign up now!</a>
-        </li>
-        <li class="nav-item">
-            <a routerLink="/login" class="button">Login</a>
-        </li>
-    </ul>
-
-
-        <ul id="left" class="nav navbar-nav">
-            <li id="home-button">
-            <a routerLink="/home" class="button2">Home</a>
-        </li>
-        <li id="myNotes-button">
-            <a routerLink="/my-notes" class="button2">My Notes</a>
-        </li>
-    </ul>
-        
-    
     </div>
     
 
