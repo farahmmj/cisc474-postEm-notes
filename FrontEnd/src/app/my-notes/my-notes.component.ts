@@ -9,7 +9,7 @@ import { PostEmService } from '../post-em.service';
 })
 export class MyNotesComponent implements OnInit {
 
-  classes = [
+  classes = [ // temp data
     {name: "CISC 108", professor: "Greg Silber"},
     {name: "CISC 475", professor: "Greg Silber"},
   ]
@@ -18,10 +18,6 @@ export class MyNotesComponent implements OnInit {
   constructor(public svc:PostEmService, public router:Router) { }
 
   ngOnInit(): void {
-    /*this.svc.CurrentUser.subscribe(user => {
-      if (user == undefined) {
-        this.router.navigate(['welcome']);
-      }
-    });*/
+
   }
 }

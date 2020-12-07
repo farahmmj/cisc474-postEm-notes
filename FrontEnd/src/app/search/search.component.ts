@@ -15,13 +15,10 @@ export class SearchComponent implements OnInit {
 
   constructor(public svc:PostEmService, public router:Router) { }
 
-  // Redirects the user to welcome page if logged out.
   ngOnInit(): void {
-    
     this.svc.CurrentClasses.subscribe((data: any) => {
       this.classes = data;
     });
-    this.svc.getClassesByProf("Bart");
   }
 
   viewClass(name: string) {

@@ -7,6 +7,7 @@
     color: #54442e;
     font-weight: bold;
     font-size: 35px;
+    text-align: center;
 }
 
 button{
@@ -24,12 +25,14 @@ button{
     margin-top: 50px;
     font-weight: 200;
     font-family: Optima, sans-serif;
-      }
-      .divider{
-        width:10px;
-        height:auto;
-        display:inline-block;
-    }
+}
+
+.divider{
+  width:10px;
+  height:auto;
+  display:inline-block;
+}
+
 
 #input{
     display: block;
@@ -49,14 +52,12 @@ button{
     font-size: 17px;
     color: #a7b4c1;
     transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
-      box-shadow 0.1s ease-in-out;
+    box-shadow 0.1s ease-in-out;
 
 }
 #div{
 width: 550px;
   border: 5px dotted #54442e;
   padding: 50px;
-  margin: 20px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: auto;
 }
