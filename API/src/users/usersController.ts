@@ -50,7 +50,7 @@ export class UsersController {
        
     const id = Database.stringToId(req.params.id)
     const username = req.params.username;
-    const notes = req.body.notes;
+    const notes = req.body.note;
     const professor = req.body.professor;
     const classId = req.body.classId;
     const data = req.body;
